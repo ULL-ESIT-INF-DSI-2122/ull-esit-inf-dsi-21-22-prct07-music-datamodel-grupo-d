@@ -6,27 +6,27 @@ import { Song } from "./song";
 /**
  * @param name Nombre del artista
  * @param genres Generos relacionados
- * @param albums Albumes en los que ha participado
  * @param songs Canciones publicadas
  * @param listeners Cantidad de oyentes mensuales
- * @param groups Grupos a los que pertenece
  * @method getName Retorna el nombre del artista
  * @method getGenres Retorna los generos relacionados
- * @method getAlbums Retorna los albumes en los que ha participado
+ * @method getAlbumes Retorna los albumes en los que ha participado
  * @method getSongs Retorna canciones publicadas
  * @method getListeners Retorna cantidad de oyentes mensuales
  * @method getGroups Retorna los grupos a los que pertenece
  * @method setName Actualiza el nombre del artista
  * @method setGenres Actualiza los generos relacionados
- * @method setAlbums Actualiza los albumes en los que ha participado
  * @method setSongs Actualiza canciones publicadas
  * @method setListeners Actualiza cantidad de oyentes mensuales
- * @method setGroups Actualiza los grupos a los que pertenece
  * @method addGroup Añade un grupo
+ * @method removeGroup Elimina un grupo
+ * @method addAlbum Añade un album
+ * @method removeAlbum Elimina un album
  */
 export class Artist {
   private groups: Group[] = [];
-  constructor(private name: string, private genres: genres[], private albums: Album[], private songs: Song[], private listeners: number){}
+  private albumes: Album[] = [];
+  constructor(private name: string, private genres: genres[], private songs: Song[], private listeners: number){}
 
   // ----------------------------------
   // getters
@@ -36,8 +36,8 @@ export class Artist {
   getGenres() {
     return this.genres;
   }
-  getAlbums() {
-    return this.albums;
+  getAlbumes() {
+    return this.albumes;
   }
   getSongs() {
     return this.songs;
@@ -56,21 +56,29 @@ export class Artist {
   setGenres(newGenre: genres[]) {
     this.genres = newGenre;
   }
-  setAlbums(newAlbum: Album[]) {
-    this.albums = newAlbum;
-  }
   setSongs(newSongs: Song[]) {
     this.songs = newSongs;
   }
   setListeners(newListeners: number) {
     this.listeners = newListeners;
   }
-  setGroups(newGroups: Group[]) {
-    this.groups = newGroups;
-  }
   // -----------------------------------
   // Métodos.
   addGroup(newGroup: Group) {
     this.groups.push(newGroup);
+  }
+
+  removeGroup(delGroup: Group) {
+    const posGroup = this.groups.indexOf(delGroup);
+    posGroup > -1 ? this.albumes.slice(posGroup) : '';
+  }
+
+  addAlbum(newAlbum: Album) {
+    this.albumes.push(newAlbum);
+  }
+
+  removeAlbum(delAlbum: Album) {
+    const posAlbum = this.albumes.indexOf(delAlbum);
+    posAlbum > -1 ? this.albumes.slice(posAlbum) : '';
   }
 }

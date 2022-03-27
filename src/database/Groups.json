@@ -1,0 +1,32 @@
+{
+  "Groups": [
+    {
+      "name": "Grupo 1",
+      "artists": [
+        "Artista 2",
+        "Artista 3"
+      ],
+      "year": "1999-01-01T00:00:00.000Z",
+      "listeners": 1245
+    },
+    {
+      "name": "Grupo 2",
+      "artists": [
+        "Artista 1",
+        "Artista 3"
+      ],
+      "year": "1988-01-01T00:00:00.000Z",
+      "listeners": 5454
+    },
+    {
+      "name": "Grupo 3",
+      "artists": [
+        "Artista 1",
+        "Artista 2",
+        "Artista 3"
+      ],
+      "year": "1950-01-01T00:00:00.000Z",
+      "listeners": 874
+    }
+  ]
+}

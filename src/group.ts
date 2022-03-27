@@ -3,7 +3,7 @@ import { Artist } from "./artist";
 
 /**
  * Clase para representar los grupos de autores.a
- * @param groupName Nombre del grupo.
+ * @param name Nombre del grupo.
  * @param artists Artistas pertenecientes al grupo.
  * @param creationYear Año de creación del grupo.
  * @param listeners Numero de personas que escuchan el grupo.
@@ -17,17 +17,20 @@ import { Artist } from "./artist";
  * @method setCreationYear Establece el año de creación del grupo.
  * @method setAlbum Establece el album y las descripciones asociadas.
  * @method setListeners Establece el numero de oyentes del grupo.
+ * @method addAlbum Añade un album
+ * @method removeAlbum Elimina un album
  */
 export class Group {
-  constructor(private groupName: string, private artists: Artist [], private creationYear: Date, private albums:[Album, string][], private listeners: number) {
+  private albumes: Album[] = [];
+  constructor(private name: string, private artists: Artist [], private creationYear: Date, private listeners: number) {
     artists.forEach((artist: Artist) => {
       artist.addGroup(this);
     });
   }
   // ----------------------------------------------------------
   // getters
-  getGroupName() {
-    return this.groupName;
+  getName() {
+    return this.name;
   }
   getArtist() {
     return this.artists;
@@ -36,28 +39,41 @@ export class Group {
     return this.creationYear;
   }
   getAlbum() {
-    return this.albums;
+    return this.albumes;
   }
   getListeners() {
     return this.listeners;
   }
   // ----------------------------------------------------------
   // Setters
-  setGroupName(newGroupName:string) {
-    this.groupName = newGroupName;
+  setGroupName(newName:string) {
+    this.name = newName;
   }
   setArtist(newArtist:Artist[]) {
+    this.artists.forEach((artist: Artist) => {
+      artist.removeGroup(this);
+    });
     this.artists = newArtist;
+    this.artists.forEach((artist: Artist) => {
+      artist.addGroup(this);
+    });
   }
   setCreationYear(newCreationYear:Date) {
     this.creationYear = newCreationYear;
   }
-  setAlbum(newAlbum:[Album, string][]) {
-    this.albums = newAlbum;
+  setAlbum(newAlbumes: Album[]) {
+    this.albumes = newAlbumes;
   }
   setListeners(listeners:number) {
     this.listeners = listeners;
   }
   // ----------------------------------------------------------
   // Metodos
+  addAlbum(newAlbum: Album) {
+    this.albumes.push(newAlbum);
+  }
+  removeAlbum(delAlbum: Album) {
+    const posAlbum = this.albumes.indexOf(delAlbum);
+    posAlbum > -1 ? this.albumes.slice(posAlbum) : '';
+  }
 }

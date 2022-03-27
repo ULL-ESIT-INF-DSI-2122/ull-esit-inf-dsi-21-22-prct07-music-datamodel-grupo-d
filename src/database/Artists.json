@@ -1,0 +1,41 @@
+{
+  "Artists": [
+    {
+      "name": "Artista 1",
+      "genres": [
+        "jazz",
+        "pop"
+      ],
+      "songs": [
+        "Virtual Diva",
+        "Ella y Yo"
+      ],
+      "listeners": 25
+    },
+    {
+      "name": "Artista 2",
+      "genres": [
+        "pop",
+        "funk"
+      ],
+      "songs": [
+        "Mami",
+        "Ella y Yo"
+      ],
+      "listeners": 250
+    },
+    {
+      "name": "Artista 3",
+      "genres": [
+        "rock",
+        "reguae"
+      ],
+      "songs": [
+        "Mami",
+        "Virtual Diva",
+        "Ella y Yo"
+      ],
+      "listeners": 25
+    }
+  ]
+}

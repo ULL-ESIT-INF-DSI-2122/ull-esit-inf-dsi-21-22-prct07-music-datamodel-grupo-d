@@ -41,7 +41,7 @@ export function savePlaylistsOnDB(playlists: Playlist[]): void {
       db.get('Playlists')
           .find({name: playlist.getName()})
           .get('songs')
-          .push(song.getSongName())
+          .push(song.getName())
           .write();
     });
   });
@@ -78,7 +78,7 @@ export function addPlaylistInDB(playlist: Playlist): void {
     db.get('Playlists')
         .find({name: playlist.getName()})
         .get('songs')
-        .push(song.getSongName())
+        .push(song.getName())
         .write();
   });
 }
@@ -96,14 +96,10 @@ type playlistJSON = {
  * Carga las playlists guardadas
  * @returns Vector de playlist
  */
-export function loadPlaylistsFromDB(): Playlist[] {
+export function loadPlaylistsFromDB(allSongs: Song[]): Playlist[] {
   // Fichero en el que se trabaja
   const adapter = new FileSync('src/database/Playlists.json');
   const db = low(adapter);
-
-  // Todas las canciones existentes
-  // para hacer las relaciones
-  const allSongs: Song[] = loadSongsFromDB();
 
   // Metes toda la informacion dentro
   const playlistsJSON = db.get('Playlists').write();
@@ -116,7 +112,7 @@ export function loadPlaylistsFromDB(): Playlist[] {
     // y las guardo para luego añadirlas al playlist que retorno
     playlist.songs.forEach((songInPlaylist: string) => {
       allSongs.forEach((song: Song) => {
-        if (songInPlaylist === song.getSongName()) {
+        if (songInPlaylist === song.getName()) {
           songs.push(song);
           return 0;
         }

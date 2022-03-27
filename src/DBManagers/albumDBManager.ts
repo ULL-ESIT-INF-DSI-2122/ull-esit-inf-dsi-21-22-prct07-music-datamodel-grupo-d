@@ -2,9 +2,13 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 
 import { Album } from "../album";
+import { Artist } from "../artist";
+import { Group } from "../group";
 import { Song } from "../song";
 
 import { loadSongsFromDB } from "./songDBManager";
+import { loadArtistsFromDB } from "./artistDBManager";
+import { loadGroupsFromDB } from "./groupDBManager";
 
 /**
  * Guarda lo que recibe como parametro borrando lo que estaba
@@ -33,7 +37,7 @@ export function saveAlbumsOnDB(albumes: Album[]): void {
     db.get('Albumes')
         .push({
           name: album.getName(),
-          nameGroupAndArtist: album.getNameGroupAndArtist(),
+          GroupOrArtist: album.getGroupOrArtist().getName(),
           year: album.getYear(),
           songs: [],
         })
@@ -43,7 +47,7 @@ export function saveAlbumsOnDB(albumes: Album[]): void {
       db.get('Albumes')
           .find({name: album.getName()})
           .get('songs')
-          .push(song.getSongName())
+          .push(song.getName())
           .write();
     });
   });
@@ -72,7 +76,7 @@ export function addAlbumInDB(album: Album): void {
   db.get('Albumes')
       .push({
         name: album.getName(),
-        nameGroupAndArtist: album.getNameGroupAndArtist(),
+        GroupOrArtist: album.getGroupOrArtist().getName(),
         year: album.getYear(),
         songs: [],
       })
@@ -82,7 +86,7 @@ export function addAlbumInDB(album: Album): void {
     db.get('Albumes')
         .find({name: album.getName()})
         .get('songs')
-        .push(song.getSongName())
+        .push(song.getName())
         .write();
   });
 }
@@ -93,7 +97,7 @@ export function addAlbumInDB(album: Album): void {
  */
 type albumJSON = {
   name: string,
-  nameGroupAndArtist: string,
+  GroupOrArtist: string,
   year: Date,
   songs: string[]
 }
@@ -102,14 +106,10 @@ type albumJSON = {
  * Carga los albumes guardadas
  * @returns Vector de albumes
  */
-export function loadAlbumesFromDB(): Album[] {
+export function loadAlbumesFromDB(allSongs: Song[], allArtist: Artist[], allGroup: Group[]): Album[] {
   // Fichero en el que se trabaja
   const adapter = new FileSync('src/database/Albumes.json');
   const db = low(adapter);
-
-  // Todas las canciones existentes
-  // para hacer las relaciones
-  const allSongs: Song[] = loadSongsFromDB();
 
   // Metes toda la informacion dentro
   const albumesJSON = db.get('Albumes').write();
@@ -122,25 +122,45 @@ export function loadAlbumesFromDB(): Album[] {
     // y las guardo para luego añadirlas al album que retorno
     album.songs.forEach((songInAlbum: string) => {
       allSongs.forEach((song: Song) => {
-        if (songInAlbum === song.getSongName()) {
+        if (songInAlbum === song.getName()) {
           songs.push(song);
           return 0;
         }
       });
     });
 
-    albumesResult.push(new Album(album.name, album.nameGroupAndArtist, new Date(album.year), songs));
+    let GroupOrArtist: Group | Artist = allArtist[0];
+    let flagFind = false;
+    allGroup.forEach((group: Group) => {
+      if (group.getName() === album.GroupOrArtist) {
+        GroupOrArtist = group;
+        flagFind = true;
+      }
+    });
+
+    if (!flagFind) {
+      allArtist.forEach((artist: Artist) => {
+        if (artist.getName() === album.GroupOrArtist) {
+          GroupOrArtist = artist;
+        }
+      });
+    }
+
+    albumesResult.push(new Album(album.name, GroupOrArtist, new Date(album.year), songs));
   });
 
   return albumesResult;
 }
 
 // const songs: Song[] = loadSongsFromDB();
-// const albumes: Album[] = [new Album("Album 1", "Artista 1", new Date("1999-12-18"), [songs[0], songs[1]]),
-//   new Album("Album 2", "Artista 2", new Date("2010-05-02"), [songs[1]])];
+// const artists: Artist[] = loadArtistsFromDB();
+// const groups: Group[] = loadGroupsFromDB();
+
+// const albumes: Album[] = [new Album("Album 1", artists[0], new Date("1999-12-18"), [songs[0], songs[1]]),
+//   new Album("Album 2", artists[1], new Date("2010-05-02"), [songs[1]])];
 
 // saveAlbumsOnDB(albumes);
-// addAlbumInDB(new Album("Album 3", "Grupo 3", new Date("2000-10-24"), [songs[2]]));
-// addAlbumInDB(new Album("Album 3", "Grupo 3", new Date("2000-10-24"), [songs[2]]));
+// addAlbumInDB(new Album("Album 3", groups[0], new Date("2000-10-24"), [songs[2]]));
+// addAlbumInDB(new Album("Album 3", groups[0], new Date("2000-10-24"), [songs[2]]));
 
 // console.log(loadAlbumesFromDB()[0]);

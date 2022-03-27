@@ -1,3 +1,5 @@
+import { Artist } from "./artist";
+import { Group } from "./group";
 import { genres } from "./musicGenre";
 import { Song } from "./song";
 
@@ -22,7 +24,9 @@ import { Song } from "./song";
  */
 export class Album {
   private genres: genres[] = [];
-  constructor(private name: string, private nameGroupAndArtist: string, private year: Date, private songs: Song []) {
+  constructor(private name: string, private GroupOrArtist: Group | Artist, private year: Date, private songs: Song []) {
+    GroupOrArtist.addAlbum(this);
+
     this.refreshData();
   }
 
@@ -32,8 +36,8 @@ export class Album {
     return this.name;
   }
 
-  getNameGroupAndArtist() {
-    return this.nameGroupAndArtist;
+  getGroupOrArtist() {
+    return this.GroupOrArtist;
   }
 
   getYear() {
@@ -54,8 +58,10 @@ export class Album {
     this.name = newName;
   }
 
-  setNameGroupAndArtist(newNameGroupAndArtist: string) {
-    this.nameGroupAndArtist = newNameGroupAndArtist;
+  setGroupAndArtist(newGroupOrArtist: Group | Artist) {
+    this.GroupOrArtist.removeAlbum(this);
+    this.GroupOrArtist = newGroupOrArtist;
+    this.GroupOrArtist.addAlbum(this);
   }
 
   setYear(newYear: Date) {

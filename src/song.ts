@@ -7,13 +7,13 @@ import { genres } from "./musicGenre";
  * @param genres Generos a los que pertenece la cancion.
  * @param single Booleano que determina si la canción es un solo o no.
  * @param numReproTotal Numero de reproducciones total de la cancion.
- * @method getSongName Retorna el nombre de la cancion.
+ * @method getName Retorna el nombre de la cancion.
  * @method getAutor Retorna el nombre del autor.
  * @method getDuration Retorna la duracion de la cancion.
  * @method getGenres Retorna el genero al que pertenece la cancion.
  * @method getSingle Retorna true si la canción es un solo y false en caso de no serlo.
  * @method getNumReproTotal Retorna el numero total de reproducciones de la cancion.
- * @method setSongName Establece el nombre de la canción.
+ * @method setName Establece el nombre de la canción.
  * @method setAutor Establece el nombre del autor de la canción.
  * @method setDuration Establece la duracion de la canción.
  * @method setGenres Establece el genero o generos al que pertenece la canción.
@@ -21,11 +21,11 @@ import { genres } from "./musicGenre";
  * @method setNumReproTotal Establece el numero total de reproducciones.
  */
 export class Song {
-  constructor(private songName: string, private autor: string, private duration: number, private genres: genres[], private single: boolean, private numReproTotal: number) { }
+  constructor(private name: string, private autor: string, private duration: number, private genres: genres[], private single: boolean, private numReproTotal: number) { }
   // -----------------------------------------------
   // getters
-  getSongName() {
-    return this.songName;
+  getName() {
+    return this.name;
   }
   getAutor() {
     return this.autor;
@@ -44,8 +44,8 @@ export class Song {
   }
   // --------------------------------------------------
   // seters
-  setSongName(newSongName:string) {
-    this.songName = newSongName;
+  setName(newName:string) {
+    this.name = newName;
   }
   setAutor(newAutor:string) {
     this.autor = newAutor;

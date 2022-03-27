@@ -25,12 +25,12 @@ export function saveSongsOnDB(songs: Song[]): void {
   // Añade todo el vector de musica
   songs.forEach((song: Song) => {
     db.get('Songs')
-        .remove({songName: song.getSongName()})
+        .remove({name: song.getName()})
         .write();
 
     db.get('Songs')
         .push({
-          songName: song.getSongName(),
+          name: song.getName(),
           author: song.getAutor(),
           duration: song.getDuration(),
           genres: [],
@@ -41,7 +41,7 @@ export function saveSongsOnDB(songs: Song[]): void {
 
     song.getGenres().forEach((genre: string) => {
       db.get('Songs')
-          .find({songName: song.getSongName()})
+          .find({name: song.getName()})
           .get('genres')
           .push(genre)
           .write();
@@ -65,13 +65,13 @@ export function addSongsInDB(song: Song): void {
   // Borra la musica que esta, para añadir la nueva
   // en caso que sea la mimsa musica
   db.get('Songs')
-      .remove({songName: song.getSongName()})
+      .remove({name: song.getName()})
       .write();
 
   // Añade la musica
   db.get('Songs')
       .push({
-        songName: song.getSongName(),
+        name: song.getName(),
         author: song.getAutor(),
         duration: song.getDuration(),
         genres: [],
@@ -82,7 +82,7 @@ export function addSongsInDB(song: Song): void {
 
   song.getGenres().forEach((genre: string) => {
     db.get('Songs')
-        .find({songName: song.getSongName()})
+        .find({name: song.getName()})
         .get('genres')
         .push(genre)
         .write();
@@ -94,7 +94,7 @@ export function addSongsInDB(song: Song): void {
  * en la base de datos
  */
 type songJSON = {
-  songName: string,
+  name: string,
   author: string,
   duration: number,
   genres: genres[],
@@ -116,7 +116,7 @@ export function loadSongsFromDB(): Song[] {
   const songsResult: Song[] = [];
 
   songsJSON.forEach((song: songJSON) => {
-    songsResult.push(new Song(song.songName, song.author, song.duration, song.genres, song.single, song.numReproTotal));
+    songsResult.push(new Song(song.name, song.author, song.duration, song.genres, song.single, song.numReproTotal));
   });
 
   return songsResult;
