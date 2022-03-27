@@ -19,7 +19,11 @@ import { Artist } from "./artist";
  * @method setListeners Establece el numero de oyentes del grupo.
  */
 export class Group {
-  constructor(private groupName: string, private artists: Artist [], private creationYear: Date, private albums:[Album, string][], private listeners: number) {}
+  constructor(private groupName: string, private artists: Artist [], private creationYear: Date, private albums:[Album, string][], private listeners: number) {
+    artists.forEach((artist: Artist) => {
+      artist.addGroup(this);
+    });
+  }
   // ----------------------------------------------------------
   // getters
   getGroupName() {

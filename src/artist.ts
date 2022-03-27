@@ -25,7 +25,8 @@ import { Song } from "./song";
  * @method addGroup Añade un grupo
  */
 export class Artist {
-  constructor(private name: string, private genres: genres[], private albums: Album[], private songs: Song[], private listeners: number, private groups: Group[] = []){}
+  private groups: Group[] = [];
+  constructor(private name: string, private genres: genres[], private albums: Album[], private songs: Song[], private listeners: number){}
 
   // ----------------------------------
   // getters
@@ -73,11 +74,3 @@ export class Artist {
     this.groups.push(newGroup);
   }
 }
-
-/*
-const tmp: Artist = new Artist("asd", ["pop", "rock"], [], [], 65);
-const group1: Group = new Group("ASd", [tmp], new Date("1995-12-17"), [], 64);
-console.log(tmp);
-tmp.addGroup(group1);
-console.log(tmp);
-*/
