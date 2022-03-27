@@ -2,9 +2,7 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 
 import { Album } from "../album";
-import { genres } from "../musicGenre";
 import { Song } from "../song";
-
 
 import { loadSongsFromDB } from "./songDBManager";
 
@@ -37,18 +35,9 @@ export function saveAlbumsOnDB(albumes: Album[]): void {
           name: album.getName(),
           nameGroupAndArtist: album.getNameGroupAndArtist(),
           year: album.getYear(),
-          genres: [],
           songs: [],
         })
         .write();
-
-    album.getGenres().forEach((genre: string) => {
-      db.get('Albumes')
-          .find({name: album.getName()})
-          .get('genres')
-          .push(genre)
-          .write();
-    });
 
     album.getSongs().forEach((song: Song) => {
       db.get('Albumes')
@@ -59,7 +48,6 @@ export function saveAlbumsOnDB(albumes: Album[]): void {
     });
   });
 }
-
 
 /**
  * Añade lo que recibe como parametro
@@ -86,18 +74,9 @@ export function addAlbumInDB(album: Album): void {
         name: album.getName(),
         nameGroupAndArtist: album.getNameGroupAndArtist(),
         year: album.getYear(),
-        genres: [],
         songs: [],
       })
       .write();
-
-  album.getGenres().forEach((genre: string) => {
-    db.get('Albumes')
-        .find({name: album.getName()})
-        .get('genres')
-        .push(genre)
-        .write();
-  });
 
   album.getSongs().forEach((song: Song) => {
     db.get('Albumes')
@@ -108,16 +87,6 @@ export function addAlbumInDB(album: Album): void {
   });
 }
 
-
-const songs: Song[] = loadSongsFromDB();
-const albumes: Album[] = [new Album("Album 1", "Artista 1", new Date("1999-12-18"), ["funk", "jazz"], [songs[0]]),
-  new Album("Album 2", "Artista 2", new Date("2010-05-02"), ["funk"], [songs[1]])];
-
-saveAlbumsOnDB(albumes);
-addAlbumInDB(new Album("Album 3", "Grupo 3", new Date("2000-10-24"), ["musica disco"], [songs[2]]));
-addAlbumInDB(new Album("Album 3", "Grupo 3", new Date("2000-10-24"), ["musica disco"], [songs[2]]));
-
-
 /**
  * Tipo de dato que representa la Cancion
  * en la base de datos
@@ -126,7 +95,6 @@ type albumJSON = {
   name: string,
   nameGroupAndArtist: string,
   year: Date,
-  genres: genres[],
   songs: string[]
 }
 
@@ -161,10 +129,18 @@ export function loadAlbumesFromDB(): Album[] {
       });
     });
 
-    albumesResult.push(new Album(album.name, album.nameGroupAndArtist, new Date(album.year), album.genres, songs));
+    albumesResult.push(new Album(album.name, album.nameGroupAndArtist, new Date(album.year), songs));
   });
 
   return albumesResult;
 }
 
-console.log(loadAlbumesFromDB()[0]);
+// const songs: Song[] = loadSongsFromDB();
+// const albumes: Album[] = [new Album("Album 1", "Artista 1", new Date("1999-12-18"), [songs[0], songs[1]]),
+//   new Album("Album 2", "Artista 2", new Date("2010-05-02"), [songs[1]])];
+
+// saveAlbumsOnDB(albumes);
+// addAlbumInDB(new Album("Album 3", "Grupo 3", new Date("2000-10-24"), [songs[2]]));
+// addAlbumInDB(new Album("Album 3", "Grupo 3", new Date("2000-10-24"), [songs[2]]));
+
+// console.log(loadAlbumesFromDB()[0]);

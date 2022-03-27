@@ -4,7 +4,6 @@ const FileSync = require('lowdb/adapters/FileSync');
 import { Playlist } from "../playlist";
 import { Song } from "../song";
 
-
 import { loadSongsFromDB } from "./songDBManager";
 
 /**
@@ -48,7 +47,6 @@ export function savePlaylistsOnDB(playlists: Playlist[]): void {
   });
 }
 
-
 /**
  * Añade lo que recibe como parametro
  * @param playlist Album a guardar
@@ -84,19 +82,6 @@ export function addPlaylistInDB(playlist: Playlist): void {
         .write();
   });
 }
-
-
-// const songs: Song[] = loadSongsFromDB();
-// const playlists: Playlist[] = [new Playlist("Playlist 1", songs), new Playlist("Playlist 2", songs)];
-
-// savePlaylistsOnDB(playlists);
-
-// console.log(playlists[1].getDuration());
-// playlists[1].addSong(songs[1]);
-// console.log(playlists[1].getDuration());
-
-// addPlaylistInDB(playlists[1]);
-
 
 /**
  * Tipo de dato que representa la Playlist
@@ -143,5 +128,16 @@ export function loadPlaylistsFromDB(): Playlist[] {
 
   return playlistsResult;
 }
+
+// const songs: Song[] = loadSongsFromDB();
+// const playlists: Playlist[] = [new Playlist("Playlist 1", songs), new Playlist("Playlist 2", songs)];
+
+// savePlaylistsOnDB(playlists);
+
+// console.log(playlists[1].getDuration());
+// playlists[1].addSong(songs[1]);
+// console.log(playlists[1].getDuration());
+
+// addPlaylistInDB(playlists[1]);
 
 // console.log(loadPlaylistsFromDB()[0]);

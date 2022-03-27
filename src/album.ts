@@ -16,11 +16,15 @@ import { Song } from "./song";
  * @method setName Actualiza el nombre del album
  * @method setNameGroupAndArtist Actualiza nombre del grupo y/o artista
  * @method setYear Actualiza año de publicación
- * @method setGenre Actualiza el genero
  * @method setSongs Actualiza todas las cansiones del album
+ * @method refreshData Recalcula los generos que incluye el album
+ * @method addSong Añade una cancion al album
  */
 export class Album {
-  constructor(private name: string, private nameGroupAndArtist: string, private year: Date, private genres: genres[], private songs: Song []) { }
+  private genres: genres[] = [];
+  constructor(private name: string, private nameGroupAndArtist: string, private year: Date, private songs: Song []) {
+    this.refreshData();
+  }
 
   // ---------------------------------------------------------------------------
   // Getters
@@ -58,13 +62,26 @@ export class Album {
     this.year = newYear;
   }
 
-  setGenres(newGenres: genres[]) {
-    this.genres = newGenres;
-  }
-
   setSongs(newSongs: Song[]) {
     this.songs = newSongs;
+    this.refreshData();
   }
   // ---------------------------------------------------------------------------
   // Metodos
+
+  private refreshData(){
+    this.genres = [];
+    this.songs.forEach((song: Song) => {
+      song.getGenres().forEach((genre: genres) => {
+        if (!this.genres.includes(genre)) {
+          this.genres.push(genre);
+        }
+      });
+    });
+  }
+
+  addSong(newSong: Song) {
+    this.songs.push(newSong);
+    this.refreshData();
+  }
 }
