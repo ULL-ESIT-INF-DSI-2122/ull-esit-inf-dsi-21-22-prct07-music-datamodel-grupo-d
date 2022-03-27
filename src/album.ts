@@ -20,7 +20,7 @@ import { Song } from "./song";
  * @method setSongs Actualiza todas las cansiones del album
  */
 export class Album {
-  constructor(private name: string, private nameGroupAndArtist: string, private year: Date, private genre: genres, private songs: Song []) { }
+  constructor(private name: string, private nameGroupAndArtist: string, private year: Date, private genres: genres[], private songs: Song []) { }
 
   // ---------------------------------------------------------------------------
   // Getters
@@ -36,8 +36,8 @@ export class Album {
     return this.year;
   }
 
-  getGenre() {
-    return this.genre;
+  getGenres() {
+    return this.genres;
   }
 
   getSongs() {
@@ -58,8 +58,8 @@ export class Album {
     this.year = newYear;
   }
 
-  setGenre(newGenre: genres) {
-    this.genre = newGenre;
+  setGenres(newGenres: genres[]) {
+    this.genres = newGenres;
   }
 
   setSongs(newSongs: Song[]) {

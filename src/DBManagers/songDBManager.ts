@@ -58,7 +58,13 @@ export function addSongsInDB(song: Song): void {
   db.defaults({Songs: []})
       .write();
 
-  // Añade todo el vector de musica
+  // Borra la musica que esta, para añadir la nueva
+  // en caso que sea la mimsa musica
+  db.get('Songs')
+      .remove({songName: song.getSongName()})
+      .write();
+
+  // Añade la musica
   db.get('Songs')
       .push({
         songName: song.getSongName(),
@@ -118,6 +124,7 @@ export function loadSongsFromDB(): Song[] {
 //   new Song("Virtual Diva", "Don Omar", 312, ["pop", "reguae"], true, 401191778)];
 // saveSongsOnDB(songsToSave);
 
+// addSongsInDB(new Song("Ella y Yo", "Aventura", 274, ["musica clasica"], false, 307982478));
 // addSongsInDB(new Song("Ella y Yo", "Aventura", 274, ["musica clasica"], false, 307982478));
 
 // const songsToLoad: Song[] = loadSongsFromDB();

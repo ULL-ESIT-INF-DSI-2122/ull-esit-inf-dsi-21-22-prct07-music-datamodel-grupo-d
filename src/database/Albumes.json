@@ -1,0 +1,38 @@
+{
+  "Albumes": [
+    {
+      "name": "Album 1",
+      "nameGroupAndArtist": "Artista 1",
+      "year": "1999-12-18T00:00:00.000Z",
+      "genres": [
+        "funk",
+        "jazz"
+      ],
+      "songs": [
+        "Mami"
+      ]
+    },
+    {
+      "name": "Album 2",
+      "nameGroupAndArtist": "Artista 2",
+      "year": "2010-05-02T00:00:00.000Z",
+      "genres": [
+        "funk"
+      ],
+      "songs": [
+        "Virtual Diva"
+      ]
+    },
+    {
+      "name": "Album 3",
+      "nameGroupAndArtist": "Grupo 3",
+      "year": "2000-10-24T00:00:00.000Z",
+      "genres": [
+        "musica disco"
+      ],
+      "songs": [
+        "Ella y Yo"
+      ]
+    }
+  ]
+}
