@@ -1,0 +1,36 @@
+{
+  "Songs": [
+    {
+      "songName": "Mami",
+      "author": "Becky G & Karol G",
+      "duration": 227,
+      "genres": [
+        "country",
+        "funk"
+      ],
+      "single": false,
+      "numReproTotal": 112725546
+    },
+    {
+      "songName": "Virtual Diva",
+      "author": "Don Omar",
+      "duration": 312,
+      "genres": [
+        "pop",
+        "reguae"
+      ],
+      "single": true,
+      "numReproTotal": 401191778
+    },
+    {
+      "songName": "Ella y Yo",
+      "author": "Aventura",
+      "duration": 274,
+      "genres": [
+        "musica clasica"
+      ],
+      "single": false,
+      "numReproTotal": 307982478
+    }
+  ]
+}
