@@ -12,11 +12,15 @@ import { Song } from "./song";
  * @method getGenres Retorna los generos
  * @method setName Actualiza el nombre
  * @method setSongs Actualiza las canciones
- * @method setDuration Actualiza la duracion
- * @method setGenres Actualiza los generos
+ * @method refreshData Metodo privado que se encarga de calcular los generos y la duracion
+ * @method addSong Añade una cancion
  */
-export class playlist {
-  constructor(private name: string, private songs: Song[], private duration: number, private genres: genres[]) {}
+export class Playlist {
+  private duration: number = 0;
+  private genres: genres[] = [];
+  constructor(private name: string, private songs: Song[]) {
+    this.refreshData();
+  }
 
   // ----------------------------------
   // getters.
@@ -37,16 +41,30 @@ export class playlist {
   setName(newName: string) {
     this.name = newName;
   }
-  setSongs(newSong: Song[]) {
-    this.songs = newSong;
-  }
-  setDuration(newDuration: number) {
-    this.duration = newDuration;
-  }
-  setGenres(newGenres: genres[]) {
-    this.genres = newGenres;
+  setSongs(newSongs: Song[]) {
+    this.songs = newSongs;
+    this.refreshData();
   }
   // -----------------------------------
   // Métodos.
-  // Funcion que suma la duraciond e cada cancion y es la duracion de la playlist
+
+  // Funcion que suma la duracion de cada cancion y los distintos generos
+  private refreshData(){
+    this.duration = 0;
+    this.genres = [];
+    this.songs.forEach((song: Song) => {
+      this.duration += song.getDuration();
+      song.getGenres().forEach((genre: genres) => {
+        if (!this.genres.includes(genre)) {
+          this.genres.push(genre);
+        }
+      });
+    });
+  }
+
+  // Añadir una cancion a la plylist
+  addSong(newSong: Song) {
+    this.songs.push(newSong);
+    this.refreshData();
+  }
 }

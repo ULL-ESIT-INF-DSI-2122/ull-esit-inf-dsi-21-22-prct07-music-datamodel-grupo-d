@@ -1,0 +1,21 @@
+{
+  "Playlists": [
+    {
+      "name": "Playlist 1",
+      "songs": [
+        "Mami",
+        "Virtual Diva",
+        "Ella y Yo"
+      ]
+    },
+    {
+      "name": "Playlist 2",
+      "songs": [
+        "Mami",
+        "Virtual Diva",
+        "Ella y Yo",
+        "Virtual Diva"
+      ]
+    }
+  ]
+}

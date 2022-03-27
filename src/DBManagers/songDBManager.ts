@@ -25,6 +25,10 @@ export function saveSongsOnDB(songs: Song[]): void {
   // Añade todo el vector de musica
   songs.forEach((song: Song) => {
     db.get('Songs')
+        .remove({songName: song.getSongName()})
+        .write();
+
+    db.get('Songs')
         .push({
           songName: song.getSongName(),
           author: song.getAutor(),

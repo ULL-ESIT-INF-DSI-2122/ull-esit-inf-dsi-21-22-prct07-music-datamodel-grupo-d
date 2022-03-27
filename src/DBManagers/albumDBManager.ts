@@ -29,6 +29,10 @@ export function saveAlbumsOnDB(albumes: Album[]): void {
   // Añade todo el vector de albumes
   albumes.forEach((album: Album) => {
     db.get('Albumes')
+        .remove({name: album.getName()})
+        .write();
+
+    db.get('Albumes')
         .push({
           name: album.getName(),
           nameGroupAndArtist: album.getNameGroupAndArtist(),
