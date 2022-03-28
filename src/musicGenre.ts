@@ -24,7 +24,40 @@ export type genres = "rock" | "pop" | "musica clasica" | "jazz" | "reguae" | "mu
  */
 
 export class MusicGenre {
-  constructor(private genre: genres, private groupAndArtist: Group | Artist[], private albums: Album[], private songs: Song[]) {}
+  private myArtists: Artist[] = [];
+  private myGroups: Group[] = [];
+  private myAlbumes: Album[] = [];
+  private mySongs: Song[] = [];
+  constructor(private genre: genres, private allSongs: Song[], private allArtists: Artist[], private allGroups: Group[], private allAlbumes: Album[]) {
+    this.allArtists.forEach((Artist: Artist) => {
+      Artist.getGenres().forEach((genre_: genres) => {
+        if (genre_ === genre && !this.myArtists.includes(Artist)) {
+          this.myArtists.push(Artist);
+        }
+      });
+    });
+    this.allGroups.forEach((Grupo: Group) => {
+      Grupo.getGenres().forEach((genre_: genres) => {
+        if (genre_ === genre && !this.myGroups.includes(Grupo)) {
+          this.myGroups.push(Grupo);
+        }
+      });
+    });
+    this.allAlbumes.forEach((Album: Album) => {
+      Album.getGenres().forEach((genre_: genres) => {
+        if (genre_ === genre && !this.myAlbumes.includes(Album)) {
+          this.myAlbumes.push(Album);
+        }
+      });
+    });
+    this.allSongs.forEach((Song: Song) => {
+      Song.getGenres().forEach((genre_: genres) => {
+        if (genre_ === genre && !this.mySongs.includes(Song)) {
+          this.mySongs.push(Song);
+        }
+      });
+    });
+  }
 
   // ----------------------------------------------
   // getters
@@ -32,34 +65,70 @@ export class MusicGenre {
     return this.genre;
   }
 
-  getGroupAndArtist() {
-    return this.groupAndArtist;
+  getGroups() {
+    return this.myGroups;
+  }
+
+  getArtists() {
+    return this.myArtists;
   }
 
   getAlbums() {
-    return this.albums;
+    return this.myAlbumes;
   }
 
   getSongs() {
-    return this.songs;
+    return this.mySongs;
   }
 
   // ----------------------------------------------------------
   // setters
   setGenre(newGenre: genres) {
+    this.myAlbumes = [];
+    this.myArtists = [];
+    this.myGroups = [];
+    this.mySongs = [];
     this.genre = newGenre;
   }
 
-  setGroupAndArtist(newGroupAndArtist: Group | Artist[]) {
-    this.groupAndArtist = newGroupAndArtist;
+  setArtists(newArtists: Artist[]) {
+    newArtists.forEach((Artist: Artist) => {
+      Artist.getGenres().forEach((genre_: genres) => {
+        if (genre_ === this.genre && !this.myArtists.includes(Artist)) {
+          this.myArtists.push(Artist);
+        }
+      });
+    });
   }
 
-  setAlbums(newAlbum: Album[]) {
-    this.albums = newAlbum;
+  setGroups(newGroups: Group[]){
+    newGroups.forEach((Grupo: Group) => {
+      Grupo.getGenres().forEach((genre_: genres) => {
+        if (genre_ === this.genre && !this.myGroups.includes(Grupo)) {
+          this.myGroups.push(Grupo);
+        }
+      });
+    });
   }
 
-  setSongs(newSong: Song[]) {
-    this.songs = newSong;
+  setAlbumes(newAlbumes: Album[]) {
+    newAlbumes.forEach((Album: Album) => {
+      Album.getGenres().forEach((genre_: genres) => {
+        if (genre_ === this.genre && !this.myAlbumes.includes(Album)) {
+          this.myAlbumes.push(Album);
+        }
+      });
+    });
+  }
+
+  setSongs(newSongs: Song[]) {
+    newSongs.forEach((Song: Song) => {
+      Song.getGenres().forEach((genre_: genres) => {
+        if (genre_ === this.genre && !this.mySongs.includes(Song)) {
+          this.mySongs.push(Song);
+        }
+      });
+    });
   }
 
   // ----------------------------------------------------------

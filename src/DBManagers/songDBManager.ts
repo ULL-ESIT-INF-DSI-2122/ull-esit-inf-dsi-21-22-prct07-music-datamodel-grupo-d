@@ -53,7 +53,7 @@ export function saveSongsOnDB(songs: Song[]): void {
  * Añade lo que recibe como parametro
  * @param song Cancion a guardar
  */
-export function addSongsInDB(song: Song): void {
+export function addSongInDB(song: Song): void {
   // Fichero en el que se trabaja
   const adapter = new FileSync('src/database/Songs.json');
   const db = low(adapter);
@@ -80,7 +80,7 @@ export function addSongsInDB(song: Song): void {
       })
       .write();
 
-  song.getGenres().forEach((genre: string) => {
+  song.getGenres().forEach((genre: genres) => {
     db.get('Songs')
         .find({name: song.getName()})
         .get('genres')
@@ -112,7 +112,7 @@ export function loadSongsFromDB(): Song[] {
   const db = low(adapter);
 
   // Metes toda la informacion dentro
-  const songsJSON = db.get('Songs').write();
+  const songsJSON: songJSON[] = db.get('Songs').write();
   const songsResult: Song[] = [];
 
   songsJSON.forEach((song: songJSON) => {

@@ -1,5 +1,6 @@
 import { Album } from "./album";
 import { Artist } from "./artist";
+import { genres } from "./musicGenre";
 
 /**
  * Clase para representar los grupos de autores.a
@@ -22,9 +23,15 @@ import { Artist } from "./artist";
  */
 export class Group {
   private albumes: Album[] = [];
+  private genres: genres[] = [];
   constructor(private name: string, private artists: Artist [], private creationYear: Date, private listeners: number) {
     artists.forEach((artist: Artist) => {
       artist.addGroup(this);
+      artist.getGenres().forEach((genre: genres) => {
+        if (!this.genres.includes(genre)) {
+          this.genres.push(genre);
+        }
+      });
     });
   }
   // ----------------------------------------------------------
@@ -43,6 +50,9 @@ export class Group {
   }
   getListeners() {
     return this.listeners;
+  }
+  getGenres() {
+    return this.genres;
   }
   // ----------------------------------------------------------
   // Setters
