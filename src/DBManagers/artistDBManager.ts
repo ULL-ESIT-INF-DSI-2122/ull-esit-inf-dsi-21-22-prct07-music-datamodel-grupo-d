@@ -1,82 +1,38 @@
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('src/database/Artists.json');
+const db = low(adapter);
 
 import { Artist } from "../artist";
 import { genres } from "../musicGenre";
 import { Song } from "../song";
 
-import { loadSongsFromDB } from "./songDBManager";
-
 /**
- * Guarda lo que recibe como parametro borrando lo que estaba
- * @param artists Vector de artistas a guardar
+ * Guarda lo que recibe como parametro
+ * @param artists Vector de Artistas a guardar
  */
 export function saveArtistsOnDB(artists: Artist[]): void {
-  // Fichero en el que se trabaja
-  const adapter = new FileSync('src/database/Artists.json');
-  const db = low(adapter);
-
-  // Inicializa el fichero
-  db.defaults({Artists: []})
-      .write();
-
-  // Borra todo lo que tiene dentro
-  db.get('Artists')
-      .remove()
-      .write();
-
-  // Añade todo el vector de artists
+  // Añade todo el vector de Artistas
   artists.forEach((artist: Artist) => {
-    db.get('Artists')
-        .remove({name: artist.getName()})
-        .write();
-
-    db.get('Artists')
-        .push({
-          name: artist.getName(),
-          genres: [],
-          songs: [],
-          listeners: artist.getListeners(),
-        })
-        .write();
-
-    artist.getGenres().forEach((genre: genres) => {
-      db.get('Artists')
-          .find({name: artist.getName()})
-          .get('genres')
-          .push(genre)
-          .write();
-    });
-
-    artist.getSongs().forEach((song: Song) => {
-      db.get('Artists')
-          .find({name: artist.getName()})
-          .get('songs')
-          .push(song.getName())
-          .write();
-    });
+    addArtistToDB(artist);
   });
 }
 
 /**
  * Añade lo que recibe como parametro
- * @param artist Album a guardar
+ * @param artist Artista a guardar
  */
-export function addArtistInDB(artist: Artist): void {
-  // Fichero en el que se trabaja
-  const adapter = new FileSync('src/database/Artists.json');
-  const db = low(adapter);
-
+export function addArtistToDB(artist: Artist): void {
   // Inicializa el fichero
   db.defaults({Artists: []})
       .write();
 
-  // Borra el album que esta, para añadir el nuevo
-  // en caso que sea el mimso album
+  // Evita que se guarden datos duplicados
   db.get('Artists')
       .remove({name: artist.getName()})
       .write();
 
+  // Añade el Artista
   db.get('Artists')
       .push({
         name: artist.getName(),
@@ -104,10 +60,10 @@ export function addArtistInDB(artist: Artist): void {
 }
 
 /**
- * Tipo de dato que representa la Playlist
+ * Tipo de dato que representa el Artista
  * en la base de datos
  */
-type artistJSON = {
+type ArtistJSON = {
   name: string,
   genres: genres[],
   songs: string[],
@@ -115,23 +71,17 @@ type artistJSON = {
 }
 
 /**
- * Carga los artistas guardados
- * @returns Vector de artistas
+ * Carga los Artistas guardados
+ * @returns Vector de Artistas
  */
 export function loadArtistsFromDB(allSongs: Song[]): Artist[] {
-  // Fichero en el que se trabaja
-  const adapter = new FileSync('src/database/Artists.json');
-  const db = low(adapter);
-
-  // Metes toda la informacion dentro
-  const artistsJSON = db.get('Artists').write();
+  // Cargo los datos del fichero
+  const artistsJSON: ArtistJSON[] = db.get('Artists').write();
   const artistsResult: Artist[] = [];
 
-  artistsJSON.forEach((artist: artistJSON) => {
+  artistsJSON.forEach((artist: ArtistJSON) => {
+    // Populate Songs
     const songs: Song[] = [];
-    // Relaciono nombre de canciones de la playlist
-    // con nombre de canciones de todas las canciones
-    // y las guardo para luego añadirlas al playlist que retorno
     artist.songs.forEach((songInArtist: string) => {
       allSongs.forEach((song: Song) => {
         if (songInArtist === song.getName()) {
@@ -146,13 +96,3 @@ export function loadArtistsFromDB(allSongs: Song[]): Artist[] {
 
   return artistsResult;
 }
-
-// const songs: Song[] = loadSongsFromDB();
-
-// const artists: Artist[] = [new Artist("Artista 1", ["jazz", "pop"], [songs[1], songs[2]], 25), new Artist("Artista 2", ["pop", "funk"], [songs[0], songs[2]], 250)];
-
-// saveArtistsOnDB(artists);
-
-// addArtistInDB(new Artist("Artista 3", ["rock", "reguae"], songs, 25));
-
-// console.log(loadArtistsFromDB());

@@ -1,0 +1,13 @@
+{
+  "MusicGenres": [
+    {
+      "genre": "pop"
+    },
+    {
+      "genre": "funk"
+    },
+    {
+      "genre": "reguae"
+    }
+  ]
+}

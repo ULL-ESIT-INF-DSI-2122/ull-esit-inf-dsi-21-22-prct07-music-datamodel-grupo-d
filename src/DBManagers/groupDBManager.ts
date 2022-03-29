@@ -1,51 +1,19 @@
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('src/database/Groups.json');
+const db = low(adapter);
 
 import { Artist } from "../artist";
 import { Group } from "../group";
 
-import { loadArtistsFromDB } from "./artistDBManager";
-
 /**
- * Guarda lo que recibe como parametro borrando lo que estaba
- * @param groups Vector de grupos a guardar
+ * Guarda lo que recibe como parametro
+ * @param groups Vector de Grupos a guardar
  */
 export function saveGroupsOnDB(groups: Group[]): void {
-  // Fichero en el que se trabaja
-  const adapter = new FileSync('src/database/Groups.json');
-  const db = low(adapter);
-
-  // Inicializa el fichero
-  db.defaults({Groups: []})
-      .write();
-
-  // Borra todo lo que tiene dentro
-  db.get('Groups')
-      .remove()
-      .write();
-
-  // Añade todo el vector de grupos
+  // Añade todo el vector de Grupos
   groups.forEach((group: Group) => {
-    db.get('Groups')
-        .remove({name: group.getName()})
-        .write();
-
-    db.get('Groups')
-        .push({
-          name: group.getName(),
-          artists: [],
-          year: group.getCreationYear(),
-          listeners: group.getListeners(),
-        })
-        .write();
-
-    group.getArtist().forEach((artist: Artist) => {
-      db.get('Groups')
-          .find({name: group.getName()})
-          .get('artists')
-          .push(artist.getName())
-          .write();
-    });
+    addGroupToDB(group);
   });
 }
 
@@ -53,26 +21,22 @@ export function saveGroupsOnDB(groups: Group[]): void {
  * Añade lo que recibe como parametro
  * @param group Grupo a guardar
  */
-export function addGroupInDB(group: Group): void {
-  // Fichero en el que se trabaja
-  const adapter = new FileSync('src/database/Groups.json');
-  const db = low(adapter);
-
+export function addGroupToDB(group: Group): void {
   // Inicializa el fichero
   db.defaults({Groups: []})
       .write();
 
-  // Borra el album que esta, para añadir el nuevo
-  // en caso que sea el mimso album
+  // Evita que se guarden datos duplicados
   db.get('Groups')
       .remove({name: group.getName()})
       .write();
 
+  // Añade el Grupo
   db.get('Groups')
       .push({
         name: group.getName(),
         artists: [],
-        year: group.getCreationYear(),
+        year: group.getYear(),
         listeners: group.getListeners(),
       })
       .write();
@@ -87,10 +51,10 @@ export function addGroupInDB(group: Group): void {
 }
 
 /**
- * Tipo de dato que representa la Playlist
+ * Tipo de dato que representa el Grupo
  * en la base de datos
  */
-type groupJSON = {
+type GroupJSON = {
   name: string,
   artists: string[],
   year: Date,
@@ -98,23 +62,18 @@ type groupJSON = {
 }
 
 /**
- * Carga los artistas guardados
- * @returns Vector de artistas
+ * Carga los Grupos guardados
+ * @param allArtist Todos los Artistas
+ * @returns Vector de Grupos
  */
 export function loadGroupsFromDB(allArtist: Artist[]): Group[] {
-  // Fichero en el que se trabaja
-  const adapter = new FileSync('src/database/Groups.json');
-  const db = low(adapter);
-
-  // Metes toda la informacion dentro
-  const groupsJSON = db.get('Groups').write();
+  // Cargo los datos del fichero
+  const groupsJSON: GroupJSON[] = db.get('Groups').write();
   const groupsResult: Group[] = [];
 
-  groupsJSON.forEach((group: groupJSON) => {
+  groupsJSON.forEach((group: GroupJSON) => {
+    // Populate Artists
     const artists: Artist[] = [];
-    // Relaciono nombre de canciones de la playlist
-    // con nombre de canciones de todas las canciones
-    // y las guardo para luego añadirlas al playlist que retorno
     group.artists.forEach((artsitsInGroup: string) => {
       allArtist.forEach((artist: Artist) => {
         if (artsitsInGroup === artist.getName()) {
@@ -129,15 +88,3 @@ export function loadGroupsFromDB(allArtist: Artist[]): Group[] {
 
   return groupsResult;
 }
-
-// const artists: Artist[] = loadArtistsFromDB();
-
-// const groups: Group[] = [new Group("Grupo 1", [artists[1], artists[2]], new Date("1999"), 1245),
-//   new Group("Grupo 2", [artists[0], artists[2]], new Date("1988"), 5454)];
-
-// saveGroupsOnDB(groups);
-
-// addGroupInDB(new Group("Grupo 3", artists, new Date("1950"), 874));
-
-// console.log(loadGroupsFromDB());
-// console.log(artists[0]);

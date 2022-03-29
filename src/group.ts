@@ -42,7 +42,7 @@ export class Group {
   getArtist() {
     return this.artists;
   }
-  getCreationYear() {
+  getYear() {
     return this.creationYear;
   }
   getAlbum() {
@@ -68,7 +68,7 @@ export class Group {
       artist.addGroup(this);
     });
   }
-  setCreationYear(newCreationYear:Date) {
+  setYear(newCreationYear:Date) {
     this.creationYear = newCreationYear;
   }
   setAlbum(newAlbumes: Album[]) {
