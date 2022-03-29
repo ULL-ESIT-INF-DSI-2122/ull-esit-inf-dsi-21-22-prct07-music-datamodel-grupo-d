@@ -5,12 +5,12 @@ import { MusicGenre } from "../musicGenre";
 import { Playlist } from "../playlist";
 import { Song } from "../song";
 
-import { loadAlbumesFromDB, loadAlbumesOnDB } from "./albumDBManager";
-import { loadArtistsFromDB, loadArtistsOnDB } from "./artistDBManager";
-import { loadGroupsFromDB, loadGroupsOnDB } from "./groupDBManager";
-import { loadMusicGenresFromDB, loadMusicGenresOnDB } from "./musicGenreDBManager";
-import { loadPlaylistsFromDB, loadPlaylistsOnDB } from "./playlistDBManager";
-import { loadSongsFromDB, loadSongsOnDB } from "./songDBManager";
+import { loadAlbumesFromDB } from "./albumDBManager";
+import { loadArtistsFromDB } from "./artistDBManager";
+import { loadGroupsFromDB } from "./groupDBManager";
+import { loadMusicGenresFromDB } from "./musicGenreDBManager";
+import { loadPlaylistsFromDB } from "./playlistDBManager";
+import { loadSongsFromDB } from "./songDBManager";
 
 // Crear los datos a guardar en la Base de Datos
 
