@@ -68,6 +68,10 @@ type AlbumJSON = {
  * @returns Vector de albumes
  */
 export function loadAlbumesFromDB(allSongs: Song[], allArtist: Artist[], allGroup: Group[]): Album[] {
+  // Inicializa el fichero
+  db.defaults({Albumes: []})
+      .write();
+
   // Cargo los datos del fichero
   const albumesJSON: AlbumJSON[] = db.get('Albumes').write();
   const albumesResult: Album[] = [];

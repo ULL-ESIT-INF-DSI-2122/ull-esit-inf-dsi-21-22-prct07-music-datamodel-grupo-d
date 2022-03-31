@@ -67,6 +67,10 @@ type GroupJSON = {
  * @returns Vector de Grupos
  */
 export function loadGroupsFromDB(allArtist: Artist[]): Group[] {
+  // Inicializa el fichero
+  db.defaults({Groups: []})
+      .write();
+
   // Cargo los datos del fichero
   const groupsJSON: GroupJSON[] = db.get('Groups').write();
   const groupsResult: Group[] = [];

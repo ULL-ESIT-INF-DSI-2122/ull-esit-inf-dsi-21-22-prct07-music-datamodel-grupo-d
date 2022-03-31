@@ -1,6 +1,6 @@
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('src/database/Playlists.json');
+const adapter = new FileSync('src/database/UsersPlaylists.json');
 const db = low(adapter);
 
 import { Playlist } from "../playlist";
@@ -10,10 +10,18 @@ import { Song } from "../song";
  * Guarda lo que recibe como parametro
  * @param playlists Vector de playlists a guardar
  */
-export function savePlaylistsOnDB(playlists: Playlist[]): void {
+export function saveUsersPlaylistsOnDB(playlists: Playlist[]): void {
+  // Inicia
+  db.defaults({Playlists: []})
+      .write();
+
+  // Borra todo lo anterior
+  db.get('Playlists')
+      .remove()
+      .write();
   // Añade todo el vector de playlists
   playlists.forEach((playlist: Playlist) => {
-    addPlaylistToDB(playlist);
+    addUsersPlaylistToDB(playlist);
   });
 }
 
@@ -21,7 +29,7 @@ export function savePlaylistsOnDB(playlists: Playlist[]): void {
  * Añade lo que recibe como parametro
  * @param playlist Playlist a guardar
  */
-export function addPlaylistToDB(playlist: Playlist): void {
+export function addUsersPlaylistToDB(playlist: Playlist): void {
   // Inicializa el fichero
   db.defaults({Playlists: []})
       .write();
@@ -62,7 +70,7 @@ type PlaylistJSON = {
  * @param allSongs Todas las Canciones
  * @returns Vector de Playlists
  */
-export function loadPlaylistsFromDB(allSongs: Song[]): Playlist[] {
+export function loadUsersPlaylistsFromDB(allSongs: Song[]): Playlist[] {
   // Inicializa el fichero
   db.defaults({Playlists: []})
       .write();

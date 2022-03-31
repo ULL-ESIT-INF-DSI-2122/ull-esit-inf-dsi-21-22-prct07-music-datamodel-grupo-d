@@ -59,6 +59,10 @@ type MusicGenreJSON = {
  * @returns Vector de Generos Musicales
  */
 export function loadMusicGenresFromDB(allSongs: Song[], allArtists: Artist[], allGroups: Group[], allAlbumes: Album[]): MusicGenre[] {
+  // Inicializa el fichero
+  db.defaults({MusicGenres: []})
+      .write();
+
   // Cargo los datos del fichero
   const musicGenresJSON: MusicGenreJSON[] = db.get('MusicGenres').write();
   const musicGenresResult: MusicGenre[] = [];

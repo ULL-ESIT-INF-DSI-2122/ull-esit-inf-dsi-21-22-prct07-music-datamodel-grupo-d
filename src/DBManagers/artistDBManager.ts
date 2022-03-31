@@ -75,6 +75,10 @@ type ArtistJSON = {
  * @returns Vector de Artistas
  */
 export function loadArtistsFromDB(allSongs: Song[]): Artist[] {
+  // Inicializa el fichero
+  db.defaults({Artists: []})
+      .write();
+
   // Cargo los datos del fichero
   const artistsJSON: ArtistJSON[] = db.get('Artists').write();
   const artistsResult: Artist[] = [];

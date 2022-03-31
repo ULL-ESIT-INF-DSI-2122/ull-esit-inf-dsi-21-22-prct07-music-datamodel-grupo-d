@@ -70,6 +70,10 @@ type SongJSON = {
  * @returns Vector de Canciones
  */
 export function loadSongsFromDB(): Song[] {
+  // Inicializa el fichero
+  db.defaults({Songs: []})
+      .write();
+
   // Cargo los datos del fichero
   const songsJSON: SongJSON[] = db.get('Songs').write();
   const songsResult: Song[] = [];
