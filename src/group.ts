@@ -84,6 +84,6 @@ export class Group {
   }
   removeAlbum(delAlbum: Album) {
     const posAlbum = this.albumes.indexOf(delAlbum);
-    posAlbum > -1 ? this.albumes.slice(posAlbum) : '';
+    posAlbum > -1 ? this.albumes.splice(posAlbum, 1) : '';
   }
 }

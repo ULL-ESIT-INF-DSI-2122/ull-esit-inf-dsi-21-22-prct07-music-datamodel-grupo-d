@@ -70,7 +70,7 @@ export class Artist {
 
   removeGroup(delGroup: Group) {
     const posGroup = this.groups.indexOf(delGroup);
-    posGroup > -1 ? this.albumes.slice(posGroup) : '';
+    posGroup > -1 ? this.albumes.splice(posGroup, 1) : '';
   }
 
   addAlbum(newAlbum: Album) {
@@ -79,6 +79,6 @@ export class Artist {
 
   removeAlbum(delAlbum: Album) {
     const posAlbum = this.albumes.indexOf(delAlbum);
-    posAlbum > -1 ? this.albumes.slice(posAlbum) : '';
+    posAlbum > -1 ? this.albumes.splice(posAlbum, 1) : '';
   }
 }
