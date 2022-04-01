@@ -1,3 +1,11 @@
 {
-  "Playlists": []
+  "Playlists": [
+    {
+      "name": "Playlist 24",
+      "songs": [
+        "Ella y Yo",
+        "Virtual Diva"
+      ]
+    }
+  ]
 }

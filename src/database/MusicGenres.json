@@ -1,13 +1,34 @@
 {
   "MusicGenres": [
     {
+      "genre": "rock"
+    },
+    {
       "genre": "pop"
     },
     {
-      "genre": "funk"
+      "genre": "musica clasica"
+    },
+    {
+      "genre": "jazz"
     },
     {
       "genre": "reguae"
+    },
+    {
+      "genre": "musica disco"
+    },
+    {
+      "genre": "heavy"
+    },
+    {
+      "genre": "soul"
+    },
+    {
+      "genre": "country"
+    },
+    {
+      "genre": "funk"
     }
   ]
 }

@@ -9,7 +9,7 @@ describe("Pruebas de la clase Songs.", () => {
       expect(BigInJapan).not.be.null;
     });
     it("Prueba de los setters.", () => {
-      BigInJapan.setSongName("Big In Japan");
+      BigInJapan.setName("Big In Japan");
       BigInJapan.setAutor("Alphaville");
       BigInJapan.setDuration(232);
       BigInJapan.setGenres(["rock"]);
@@ -17,7 +17,7 @@ describe("Pruebas de la clase Songs.", () => {
       BigInJapan.setNumReproTotal(27097126);
     });
     it("Pruebas Getters.", () => {
-      expect(BigInJapan.getSongName()).to.eql("Big In Japan");
+      expect(BigInJapan.getName()).to.eql("Big In Japan");
       expect(BigInJapan.getAutor()).to.eql("Alphaville");
       expect(BigInJapan.getDuration()).to.eql(232);
       expect(BigInJapan.getGenres()).to.eql(["rock"]);

@@ -2,18 +2,19 @@ import { genres } from "./musicGenre";
 import { Song } from "./song";
 
 /**
- * @param name Nombre de la playlist
- * @param songs Canciones que incluye
+ * @param name Nombre de la playlist.
+ * @param songs Canciones que incluye la playlist.
  * @param duration Duracion de la playlist
- * @param genres Generos que incluye
+ * @param genres Generos que incluye la playlist.
  * @method getName Retorna el nombre de la playlist
- * @method getSongs Retorna las consiones
- * @method getDuration Retorna la duracion
- * @method getGenres Retorna los generos
- * @method setName Actualiza el nombre
- * @method setSongs Actualiza las canciones
- * @method refreshData Metodo privado que se encarga de calcular los generos y la duracion
- * @method addSong Añade una cancion
+ * @method getSongs Retorna las consiones de la playlist.
+ * @method getDuration Retorna la duracion de la playlist.
+ * @method getGenres Retorna los generos de la playlist.
+ * @method setName Actualiza el nombre de la playlist.
+ * @method setSongs Actualiza las canciones de la playlist.
+ * @method refreshData Metodo privado que se encarga de calcular los generos y la duracion de la playlist.
+ * @method addSong Añade una cancion de la playlist.
+ * @method removeSong Elimina una cancion de la playlist en caso de existir.
  */
 export class Playlist {
   private duration: number = 0;
@@ -62,9 +63,16 @@ export class Playlist {
     });
   }
 
-  // Añadir una cancion a la plylist
+  // Añadir una cancion a la playlist
   addSong(newSong: Song) {
     this.songs.push(newSong);
+    this.refreshData();
+  }
+
+  // Elimina una cancion si existe
+  removeSong(removeSong: Song) {
+    const pos = this.songs.indexOf(removeSong);
+    pos > -1 ? this.songs.splice(pos, 1) : "";
     this.refreshData();
   }
 }

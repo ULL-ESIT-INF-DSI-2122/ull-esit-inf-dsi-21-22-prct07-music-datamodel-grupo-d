@@ -1,7 +1,7 @@
 import { genres } from "./musicGenre";
 /**
  * Class to representate Songs.
- * @param songName Nombre de la cancion.
+ * @param name Nombre de la cancion.
  * @param autor Autor de la cancion.
  * @param duration Duracion de la cancion en segundos.
  * @param genres Generos a los que pertenece la cancion.
@@ -62,6 +62,4 @@ export class Song {
   setNumReproTotal(newNumReproTotal:number) {
     this.numReproTotal = newNumReproTotal;
   }
-  // ----------------------------------------------------------
-  // Metodos
 }

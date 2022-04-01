@@ -2,25 +2,24 @@ import { Artist } from "./artist";
 import { Group } from "./group";
 import { genres } from "./musicGenre";
 import { Song } from "./song";
-
 /**
  * Clase Album
- * @param name Nombre del Album
- * @param nameGroupAndArtist Nombre del grupo y/o artista
- * @param year Año de publicación
- * @param genre El genero
- * @param songs Todas las cansiones del album
- * @method getName Retorna el nombre del album
- * @method getNameGroupAndArtist Retorna nombre del grupo y/o artista
- * @method getYear Retorna año de publicación
- * @method getGenre Retorna el genero
- * @method getSongs Retorna todas las cansiones del album
- * @method setName Actualiza el nombre del album
- * @method setNameGroupAndArtist Actualiza nombre del grupo y/o artista
- * @method setYear Actualiza año de publicación
- * @method setSongs Actualiza todas las cansiones del album
- * @method refreshData Recalcula los generos que incluye el album
- * @method addSong Añade una cancion al album
+ * @param name Nombre del Album.
+ * @param GroupAndArtist Nombre del grupo y/o artista.
+ * @param year Año de publicación.
+ * @param genre El genero de la canción almacenado en un vector.
+ * @param songs Todas las cansiones del album.
+ * @method getName Retorna el nombre del album.
+ * @method getNameGroupAndArtist Retorna nombre del grupo y/o artista.
+ * @method getYear Retorna año de publicación.
+ * @method getGenre Retorna el genero.
+ * @method getSongs Retorna todas las cansiones del album.
+ * @method setName Actualiza el nombre del album.
+ * @method setNameGroupAndArtist Actualiza nombre del grupo y/o artista.
+ * @method setYear Actualiza año de publicación.
+ * @method setSongs Actualiza todas las cansiones del album.
+ * @method refreshData Recalcula los generos que incluye el album.
+ * @method addSong Añade una cancion al album.
  */
 export class Album {
   private genres: genres[] = [];

@@ -14,6 +14,7 @@ import { loadSongsFromDB } from "./songDBManager";
 
 // Crear los datos a guardar en la Base de Datos
 
+// Una cosa, solo crea los vectores con toda la info, no uses aun la funcion save****OnDB()
 
 // Cargamos datos desde los ficheros
 const songs: Song[] = loadSongsFromDB();

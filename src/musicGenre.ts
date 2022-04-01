@@ -10,19 +10,25 @@ export type genres = "rock" | "pop" | "musica clasica" | "jazz" | "reguae" | "mu
 /**
  * Clase para representar los generos de música.
  * @param genre Nombre del genero
- * @param groupAndArtist  Nombre de el grupo(s) y/o artista(s) que  el genero
- * @param albums Albumes dentro de la biblioteca relacionados a este genero.
- * @param songs Canciones relacionadas a este genero.
- * @method getGenre Retorna el nombre del genero.
- * @method getGroupAndArtist Retorna el nombre del grupo(s) y/o artista(s).
- * @method getAlbums Retorna los albumes.
- * @method getSongs Retorna las canciones.
- * @method setGenre Establece el nombre del genero entre los tipos genre.
- * @method setGroupAndArtist Establece los grupos y/o artistas pertenecientes al genero.
- * @method setAlbum Establece los albumes pertenecientes al genero.
- * @method setSongs Establece las canciones pertenecientes al genero.
- */
-
+ * @param allSongs Todas las canciones que tenemos en nuestra base de datos.
+ * @param allArtists Todos los artistas que tenemos en nuestra base de datos.
+ * @param allGroups Todos los grupos que tenemos en nuestra base de datos.
+ * @param allAlbumes Todos los albumes que tenemos en nuestra base de datos.
+ * @param mySongs Todas las canciones pertenecientes al genero.
+ * @param myArtists Todos los artistas pertenecientes al genero.
+ * @param myGroups Todos los grupos pertenecientes al genero.
+ * @param myAlbumes Todos los albumes pertenecientes al genero.
+ * @method getGenre() Retorna el genero que representa la clase.
+ * @method getGroups() Retorna los grupos pertenecientes al genero.
+ * @method getArtist() Retorna los artistas pertenecientes al genero.
+ * @method getAlbums() Retorna los albumes  pertenecientes al genero.
+ * @method getSongs() Retorna las canciones pertenecientes al genero.
+ * @method setGenre() Actualiza el genero.
+ * @method setArtists() Actualiza los artistas del genero.
+ * @method setGroups() Actualiza los grupos del genero.
+ * @method setAlbumes() Actualiza los albumes del genero.
+ * @method setSongs() Actualiza las canciones del genero.
+*/
 export class MusicGenre {
   private myArtists: Artist[] = [];
   private myGroups: Group[] = [];
@@ -130,7 +136,4 @@ export class MusicGenre {
       });
     });
   }
-
-  // ----------------------------------------------------------
-  // Metodos
 }

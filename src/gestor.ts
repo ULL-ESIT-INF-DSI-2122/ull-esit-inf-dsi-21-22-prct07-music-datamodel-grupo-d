@@ -103,7 +103,7 @@ export class Gestor {
       } else if (res.playlist === -1) {
         this.start();
       } else if (res.playlist === -2) {
-        this.nameOrRenamePlayList(new Playlist("template", []));
+        this.newOrRenamePlayList(new Playlist("New Playlist", []), true);
       }
     });
   }
@@ -136,7 +136,7 @@ export class Gestor {
           this.moreInfoPlaylist(playlist, 0, false, isDeleteable);
           break;
         case 1:
-          this.nameOrRenamePlayList(playlist);
+          isDeleteable ? this.manipulatePlaylist(playlist) : this.newOrRenamePlayList(playlist, true);
           break;
         case 2:
           const pos: number = this.userPlaylist.indexOf(playlist);
@@ -151,29 +151,41 @@ export class Gestor {
     });
   }
 
-  nameOrRenamePlayList(playlist: Playlist) {
+  newOrRenamePlayList(playlist: Playlist, isNew: boolean) {
     inquire.prompt({
       name: 'namePlaylist',
       message: 'New name playlist',
     }).then((res: {namePlaylist: string}) => {
-      const newPlaylist: Playlist = new Playlist(res.namePlaylist, playlist.getSongs());
-      this.manipulatePlaylist(newPlaylist);
+      if (!isNew) {
+        playlist.setName(res.namePlaylist);
+        saveUsersPlaylistsOnDB(this.userPlaylist);
+        this.manipulatePlaylist(playlist);
+      } else {
+        const newPlaylist: Playlist = new Playlist(res.namePlaylist, playlist.getSongs());
+        this.manipulatePlaylist(newPlaylist);
+      }
     });
   }
 
   manipulatePlaylist(playlist: Playlist) {
     console.clear();
-    console.log("Manipilate Playlist: \n", playlist);
 
     inquire.prompt({
       type: 'list',
       pageSize: 12,
       name: 'manipulatePlaylist',
       message: 'Actions with ' + playlist.getName(),
-      choices: [
-        {name: "Add Song(s)", value: 0},
-        {name: "Remove Song(s)", value: 1},
-        {name: "Save", value: 2},
+      choices: playlist.getSongs().length > 0 ? [
+        {name: "Rename", value: 0},
+        {name: "Add Song(s)", value: 1},
+        {name: "Remove Song(s)", value: 2},
+        {name: "Save", value: 3},
+        {name: "Cancel", value: -1},
+      ]:
+      [
+        {name: "Rename", value: 0},
+        {name: "Add Song(s)", value: 1},
+        {name: "Save", value: 3},
         {name: "Cancel", value: -1},
       ],
     }).then((res: {manipulatePlaylist: number}) => {
@@ -182,16 +194,17 @@ export class Gestor {
           this.start();
           break;
         case 0:
-          // TODO: Terminar esto
-          console.log("Add Songs");
+          this.newOrRenamePlayList(playlist, false);
           break;
         case 1:
-          // TODO: Terminar esto
-          console.log("Remove Songs");
+          this.manipulateAddSongs(playlist);
           break;
         case 2:
+          this.manipulateRemoveSongs(playlist);
+          break;
+        case 3:
           addUsersPlaylistToDB(playlist);
-          this.userPlaylist.push(playlist);
+          this.userPlaylist.includes(playlist) ? "" : this.userPlaylist.push(playlist);
           this.usersPlayLists();
           break;
 
@@ -201,7 +214,53 @@ export class Gestor {
     });
   }
 
-  // Muestra mas infomracion de la playlist pasada
+  manipulateRemoveSongs(playlist: Playlist) {
+    console.clear();
+
+    inquire.prompt({
+      pageSize: 10,
+      type: 'checkbox',
+      name: 'manipulateRemoveSongs',
+      message: 'Actions with ' + playlist.getName(),
+      choices: playlist.getSongs().map((song: Song) => song.getName()),
+    }).then((res: {manipulateRemoveSongs: string[]}) => {
+      console.log(res.manipulateRemoveSongs);
+      res.manipulateRemoveSongs.forEach((nameSong: string) => {
+        const removeSong = this.songs.find((song: Song) => {
+          return song.getName() === nameSong;
+        });
+        removeSong ? playlist.removeSong(removeSong) : "";
+      });
+      // Para actualizar los cambios hechos
+      saveUsersPlaylistsOnDB(this.userPlaylist);
+      this.manipulatePlaylist(playlist);
+    });
+  }
+
+  manipulateAddSongs(playlist: Playlist) {
+    console.clear();
+
+    inquire.prompt({
+      pageSize: 10,
+      type: 'checkbox',
+      name: 'manipulateAddSongs',
+      message: 'Actions with ' + playlist.getName(),
+      choices: this.songs.map((song: Song) => song.getName()),
+    }).then((res: {manipulateAddSongs: string[]}) => {
+      console.log(res.manipulateAddSongs);
+      res.manipulateAddSongs.forEach((nameSong: string) => {
+        const addSong = this.songs.find((song: Song) => {
+          return song.getName() === nameSong;
+        });
+        addSong ? playlist.addSong(addSong) : "";
+      });
+      // Para actualizar los cambios hechos
+      saveUsersPlaylistsOnDB(this.userPlaylist);
+      this.manipulatePlaylist(playlist);
+    });
+  }
+
+  // Muestra mas informacion de la playlist pasada
   moreInfoPlaylist(playlist: Playlist, orden: number, rever: boolean, isDeleteable: boolean): void {
     const songs: Song[] = playlist.getSongs();
     // Sort By *

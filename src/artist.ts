@@ -4,10 +4,12 @@ import { Album } from "./album";
 import { Song } from "./song";
 
 /**
- * @param name Nombre del artista
- * @param genres Generos relacionados
- * @param songs Canciones publicadas
- * @param listeners Cantidad de oyentes mensuales
+ * @param name Nombre del artista.
+ * @param genres Generos relacionados.
+ * @param songs Canciones publicadas.
+ * @param listeners Cantidad de oyentes mensuales.
+ * @param groups Grupos a los que pertenece el artista.
+ * @param albumes Albumes en los que colabora el artista.
  * @method getName Retorna el nombre del artista
  * @method getGenres Retorna los generos relacionados
  * @method getAlbumes Retorna los albumes en los que ha participado

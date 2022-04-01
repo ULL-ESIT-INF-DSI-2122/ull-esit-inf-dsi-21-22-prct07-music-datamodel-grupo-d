@@ -3,11 +3,13 @@ import { Artist } from "./artist";
 import { genres } from "./musicGenre";
 
 /**
- * Clase para representar los grupos de autores.a
+ * Clase para representar los grupos de autores.
  * @param name Nombre del grupo.
  * @param artists Artistas pertenecientes al grupo.
  * @param creationYear Año de creación del grupo.
  * @param listeners Numero de personas que escuchan el grupo.
+ * @param albumes Albumes en los que ha participado el grupo.
+ * @param genres Generos del grupo calculados a partir de los artistas en el constructor.
  * @method getGroupName Retorna el nombre del grupo.
  * @method getArtist Retornael nombre de los artistas del grupo.
  * @method getCreationYear Retorna el año de creacion del grupo.
@@ -18,8 +20,8 @@ import { genres } from "./musicGenre";
  * @method setCreationYear Establece el año de creación del grupo.
  * @method setAlbum Establece el album y las descripciones asociadas.
  * @method setListeners Establece el numero de oyentes del grupo.
- * @method addAlbum Añade un album
- * @method removeAlbum Elimina un album
+ * @method addAlbum Añade un album.
+ * @method removeAlbum Elimina un album.
  */
 export class Group {
   private albumes: Album[] = [];
