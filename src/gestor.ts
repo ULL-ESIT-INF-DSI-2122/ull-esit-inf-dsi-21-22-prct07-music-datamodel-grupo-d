@@ -6,14 +6,29 @@ import { addUsersPlaylistToDB, loadUsersPlaylistsFromDB, saveUsersPlaylistsOnDB 
 import { Playlist } from "./playlist";
 import { Song } from "./song";
 
+/**
+ * Clase que permite la interacion por consola con el usuario
+ * @constructor No recive nada, solo carga los datos de la DB
+ * @private songs Vector con todas las canciones cargadas de la DB
+ * @private playlists Vector con todas las playlists cargadas de la DB
+ * @private usersPlaylists Vector con todas las playlists de los usuarios cargadas de la DB
+ * @method start Da comienzo al programa
+ * @method userPlayList Encargado de listar las playlist del usuario
+ * @method actionsPlaylist Permite elegir varias acciones, como mas informacion, editar y borrar si es del usuario
+ * @method newOrRenamePlayList Crea o renombra una playlist existente si es del usuario
+ * @method manipulatePlaylist Permite modificar las playlist de los usuarios
+ * @method manipulateRemoveSongs Elimina canciones de ls playlist de los usuarios
+ * @method manipulateAddSongs Añade nuevas musicas a las playlist de los usuarios
+ * @method moreInfoPlaylist Permite realizar diferentes Sorts a las musicas
+ */
 export class Gestor {
   private songs: Song[] = [];
   private playlists: Playlist[] = [];
-  private userPlaylist: Playlist[] = [];
+  private usersPlaylists: Playlist[] = [];
   constructor() {
     this.songs = loadSongsFromDB();
     this.playlists = loadPlaylistsFromDB(this.songs);
-    this.userPlaylist = loadUsersPlaylistsFromDB(this.songs);
+    this.usersPlaylists = loadUsersPlaylistsFromDB(this.songs);
   }
 
   start() {
@@ -56,12 +71,12 @@ export class Gestor {
         // Informacion de la Playlist seleccionada
         this.actionsPlaylist(this.playlists[res.playlist], false);
       } else if (res.playlist === -1) {
-        this.usersPlayLists();
+        this.userPlayList();
       } else return 0;
     });
   }
 
-  usersPlayLists() {
+  userPlayList() {
     // Tipo de dato para creaar las opciones
     type viewPlaylistJSON = {
       name: string,
@@ -69,7 +84,7 @@ export class Gestor {
     }
     // Vectores de opciones
     const options: viewPlaylistJSON[] = [];
-    this.userPlaylist.forEach((playlist: Playlist, index: number) => {
+    this.usersPlaylists.forEach((playlist: Playlist, index: number) => {
       // Calculamos la duracion en horas minutos y segundos
       let hour: number | string = parseInt((playlist.getDuration() / 3600).toFixed(0));
       let min: number | string = parseInt((playlist.getDuration() / 60).toFixed(0));
@@ -99,7 +114,7 @@ export class Gestor {
     }).then((res: {playlist: number}) => {
       if (res.playlist >= 0) {
         // Informacion de la Playlist seleccionada
-        this.actionsPlaylist(this.userPlaylist[res.playlist], true);
+        this.actionsPlaylist(this.usersPlaylists[res.playlist], true);
       } else if (res.playlist === -1) {
         this.start();
       } else if (res.playlist === -2) {
@@ -130,7 +145,7 @@ export class Gestor {
     }).then((res: {infoPlaylist: number}) => {
       switch (res.infoPlaylist) {
         case -1:
-          isDeleteable ? this.usersPlayLists() : this.start();
+          isDeleteable ? this.userPlayList() : this.start();
           break;
         case 0:
           this.moreInfoPlaylist(playlist, 0, false, isDeleteable);
@@ -139,10 +154,10 @@ export class Gestor {
           isDeleteable ? this.manipulatePlaylist(playlist) : this.newOrRenamePlayList(playlist, true);
           break;
         case 2:
-          const pos: number = this.userPlaylist.indexOf(playlist);
-          pos >= 0 ? this.userPlaylist.splice(pos, 1): "";
-          saveUsersPlaylistsOnDB(this.userPlaylist);
-          this.usersPlayLists();
+          const pos: number = this.usersPlaylists.indexOf(playlist);
+          pos >= 0 ? this.usersPlaylists.splice(pos, 1): "";
+          saveUsersPlaylistsOnDB(this.usersPlaylists);
+          this.userPlayList();
           break;
 
         default:
@@ -158,7 +173,7 @@ export class Gestor {
     }).then((res: {namePlaylist: string}) => {
       if (!isNew) {
         playlist.setName(res.namePlaylist);
-        saveUsersPlaylistsOnDB(this.userPlaylist);
+        saveUsersPlaylistsOnDB(this.usersPlaylists);
         this.manipulatePlaylist(playlist);
       } else {
         const newPlaylist: Playlist = new Playlist(res.namePlaylist, playlist.getSongs());
@@ -204,8 +219,8 @@ export class Gestor {
           break;
         case 3:
           addUsersPlaylistToDB(playlist);
-          this.userPlaylist.includes(playlist) ? "" : this.userPlaylist.push(playlist);
-          this.usersPlayLists();
+          this.usersPlaylists.includes(playlist) ? "" : this.usersPlaylists.push(playlist);
+          this.userPlayList();
           break;
 
         default:
@@ -232,7 +247,7 @@ export class Gestor {
         removeSong ? playlist.removeSong(removeSong) : "";
       });
       // Para actualizar los cambios hechos
-      saveUsersPlaylistsOnDB(this.userPlaylist);
+      saveUsersPlaylistsOnDB(this.usersPlaylists);
       this.manipulatePlaylist(playlist);
     });
   }
@@ -255,7 +270,7 @@ export class Gestor {
         addSong ? playlist.addSong(addSong) : "";
       });
       // Para actualizar los cambios hechos
-      saveUsersPlaylistsOnDB(this.userPlaylist);
+      saveUsersPlaylistsOnDB(this.usersPlaylists);
       this.manipulatePlaylist(playlist);
     });
   }
