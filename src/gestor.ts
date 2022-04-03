@@ -1,5 +1,6 @@
 const inquire = require('inquirer');
 
+import { AdvancedGestor } from "./advancedGestor";
 import { loadPlaylistsFromDB } from "./DBManagers/playlistDBManager";
 import { loadSongsFromDB } from "./DBManagers/songDBManager";
 import { addUsersPlaylistToDB, loadUsersPlaylistsFromDB, saveUsersPlaylistsOnDB } from "./DBManagers/userPlaylistDBManager";
@@ -25,6 +26,7 @@ export class Gestor {
   private songs: Song[] = [];
   private playlists: Playlist[] = [];
   private usersPlaylists: Playlist[] = [];
+  private advancedGestor: AdvancedGestor = new AdvancedGestor(this);
   constructor() {
     this.songs = loadSongsFromDB();
     this.playlists = loadPlaylistsFromDB(this.songs);
@@ -55,7 +57,8 @@ export class Gestor {
 
     // Opciones para salir y ver las playlist del usuario
     options.push({name: "User Playlist", value: -1});
-    options.push({name: "Quit", value: -2});
+    options.push({name: "Advanced Gestor", value: -2});
+    options.push({name: "Quit", value: -3});
 
     // Limpiamos consola
     console.clear();
@@ -72,6 +75,9 @@ export class Gestor {
         this.actionsPlaylist(this.playlists[res.playlist], false);
       } else if (res.playlist === -1) {
         this.userPlayList();
+      } else if (res.playlist === -2) {
+        // Advanced Gestor
+        this.advancedGestor.start();
       } else return 0;
     });
   }
