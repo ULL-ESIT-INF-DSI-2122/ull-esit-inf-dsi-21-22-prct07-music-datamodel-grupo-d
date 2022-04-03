@@ -24,6 +24,15 @@
       "songs": [
         "Ella y Yo"
       ]
+    },
+    {
+      "name": "Album 4",
+      "GroupOrArtist": "Grupo 1",
+      "year": "2000-11-24T00:00:00.000Z",
+      "songs": [
+        "Ella y Yo",
+        "Virtual Diva"
+      ]
     }
   ]
 }
