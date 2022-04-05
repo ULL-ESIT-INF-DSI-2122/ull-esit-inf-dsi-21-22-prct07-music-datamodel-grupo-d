@@ -16,6 +16,7 @@ Luciano Sekulic Gregoris     | alu0101022239@ull.edu.es
 
 ## 1. Introduccción de la práctica.
 
+En la práctica se nos pide
 
 ## 2. Jerarquía de clases planteada.
 
