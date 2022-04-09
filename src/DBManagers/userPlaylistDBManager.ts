@@ -5,6 +5,7 @@ const db = low(adapter);
 
 import { Playlist } from "../playlist";
 import { Song } from "../song";
+import { PlaylistJSON } from "./playlistDBManager";
 
 /**
  * Guarda lo que recibe como parametro
@@ -54,15 +55,6 @@ export function addUsersPlaylistToDB(playlist: Playlist): void {
         .push(song.getName())
         .write();
   });
-}
-
-/**
- * Tipo de dato que representa la Playlist
- * en la base de datos
- */
-type PlaylistJSON = {
-  name: string,
-  songs: string[]
 }
 
 /**

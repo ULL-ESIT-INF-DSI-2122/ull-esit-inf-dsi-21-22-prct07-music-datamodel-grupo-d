@@ -52,7 +52,7 @@ export function addPlaylistToDB(playlist: Playlist): void {
  * Tipo de dato que representa la Playlist
  * en la base de datos
  */
-type PlaylistJSON = {
+export type PlaylistJSON = {
   name: string,
   songs: string[]
 }

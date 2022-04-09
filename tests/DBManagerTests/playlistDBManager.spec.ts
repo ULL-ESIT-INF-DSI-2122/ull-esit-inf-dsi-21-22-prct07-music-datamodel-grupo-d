@@ -4,7 +4,7 @@ import { loadPlaylistsFromDB, savePlaylistsOnDB } from "../../src/DBManagers/pla
 import { allSongs } from "./dataTests";
 import { Playlist } from "../../src/playlist";
 
-describe("Pruebas de la clase Artist DB Manager.", () => {
+describe("Pruebas de la clase Playlist DB Manager.", () => {
   const allPlaylists: Playlist[] = [
     new Playlist("Playlist1", []),
     new Playlist("Playlist2", []),
@@ -15,10 +15,10 @@ describe("Pruebas de la clase Artist DB Manager.", () => {
       allPlaylists[i].addSong(allSongs[j]);
     }
   }
-  it("Guardar Artistas", () => {
+  it("Guardar Listas de musicas", () => {
     savePlaylistsOnDB(allPlaylists);
   });
-  it("Cargar Artistas.", () => {
+  it("Cargar Listas de musicas.", () => {
     expect(loadPlaylistsFromDB(allSongs)).to.eql(allPlaylists);
   });
 });
