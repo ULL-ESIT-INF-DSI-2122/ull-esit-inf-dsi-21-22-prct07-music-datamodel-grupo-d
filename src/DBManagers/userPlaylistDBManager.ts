@@ -9,19 +9,19 @@ import { PlaylistJSON } from "./playlistDBManager";
 
 /**
  * Guarda lo que recibe como parametro
- * @param playlists Vector de playlists a guardar
+ * @param userPlaylists Vector de playlists a guardar
  */
-export function saveUsersPlaylistsOnDB(playlists: Playlist[]): void {
+export function saveUsersPlaylistsOnDB(userPlaylists: Playlist[]): void {
   // Inicia
-  db.defaults({Playlists: []})
+  db.defaults({UsersPlaylists: []})
       .write();
 
   // Borra todo lo anterior
-  db.get('Playlists')
+  db.get('UsersPlaylists')
       .remove()
       .write();
   // Añade todo el vector de playlists
-  playlists.forEach((playlist: Playlist) => {
+  userPlaylists.forEach((playlist: Playlist) => {
     addUsersPlaylistToDB(playlist);
   });
 }
@@ -30,29 +30,29 @@ export function saveUsersPlaylistsOnDB(playlists: Playlist[]): void {
  * Añade lo que recibe como parametro
  * @param playlist Playlist a guardar
  */
-export function addUsersPlaylistToDB(playlist: Playlist): void {
+export function addUsersPlaylistToDB(userPlaylist: Playlist): void {
   // Inicializa el fichero
-  db.defaults({Playlists: []})
+  db.defaults({UsersPlaylists: []})
       .write();
 
   // Evita que se guarden datos duplicados
-  db.get('Playlists')
-      .remove({name: playlist.getName()})
+  db.get('UsersPlaylists')
+      .remove({name: userPlaylist.getName()})
       .write();
 
   // Añade la playlist
-  db.get('Playlists')
+  db.get('UsersPlaylists')
       .push({
-        name: playlist.getName(),
+        name: userPlaylist.getName(),
         songs: [],
       })
       .write();
 
-  playlist.getSongs().forEach((song: Song) => {
-    db.get('Playlists')
-        .find({name: playlist.getName()})
+  userPlaylist.getSongs().forEach((userSong: Song) => {
+    db.get('UsersPlaylists')
+        .find({name: userPlaylist.getName()})
         .get('songs')
-        .push(song.getName())
+        .push(userSong.getName())
         .write();
   });
 }
@@ -64,28 +64,28 @@ export function addUsersPlaylistToDB(playlist: Playlist): void {
  */
 export function loadUsersPlaylistsFromDB(allSongs: Song[]): Playlist[] {
   // Inicializa el fichero
-  db.defaults({Playlists: []})
+  db.defaults({UsersPlaylists: []})
       .write();
 
   // Cargo los datos del fichero
-  const playlistsJSON: PlaylistJSON[] = db.get('Playlists').write();
+  const userPlaylistsJSON: PlaylistJSON[] = db.get('UsersPlaylists').write();
 
-  const playlistsResult: Playlist[] = [];
+  const userPlaylistsResult: Playlist[] = [];
 
-  playlistsJSON.forEach((playlist: PlaylistJSON) => {
+  userPlaylistsJSON.forEach((userPlaylist: PlaylistJSON) => {
     // Populate Songs
     const songs: Song[] = [];
-    playlist.songs.forEach((songInPlaylist: string) => {
+    userPlaylist.songs.forEach((songInUserPlaylist: string) => {
       allSongs.forEach((song: Song) => {
-        if (songInPlaylist === song.getName()) {
+        if (songInUserPlaylist === song.getName()) {
           songs.push(song);
           return 0;
         }
       });
     });
 
-    playlistsResult.push(new Playlist(playlist.name, songs));
+    userPlaylistsResult.push(new Playlist(userPlaylist.name, songs));
   });
 
-  return playlistsResult;
+  return userPlaylistsResult;
 }
