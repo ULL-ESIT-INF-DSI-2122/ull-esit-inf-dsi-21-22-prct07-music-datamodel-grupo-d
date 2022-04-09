@@ -75,10 +75,10 @@ export class MusicGenre {
 
   setArtists(newArtists: Artist[]) {
     this.myArtists = [];
-    newArtists.forEach((Artist: Artist) => {
-      Artist.getGenres().forEach((genre_: genres) => {
-        if (genre_ === this.genre && !this.myArtists.includes(Artist)) {
-          this.myArtists.push(Artist);
+    newArtists.forEach((artist: Artist) => {
+      artist.getGenres().forEach((genre_: genres) => {
+        if (genre_ === this.genre && !this.myArtists.includes(artist)) {
+          this.myArtists.push(artist);
         }
       });
     });
@@ -86,10 +86,10 @@ export class MusicGenre {
 
   setGroups(newGroups: Group[]){
     this.myGroups = [];
-    newGroups.forEach((Grupo: Group) => {
-      Grupo.getGenres().forEach((genre_: genres) => {
-        if (genre_ === this.genre && !this.myGroups.includes(Grupo)) {
-          this.myGroups.push(Grupo);
+    newGroups.forEach((grupo: Group) => {
+      grupo.getGenres().forEach((genre_: genres) => {
+        if (genre_ === this.genre && !this.myGroups.includes(grupo)) {
+          this.myGroups.push(grupo);
         }
       });
     });
@@ -97,10 +97,10 @@ export class MusicGenre {
 
   setAlbumes(newAlbumes: Album[]) {
     this.myAlbumes = [];
-    newAlbumes.forEach((Album: Album) => {
-      Album.getGenres().forEach((genre_: genres) => {
-        if (genre_ === this.genre && !this.myAlbumes.includes(Album)) {
-          this.myAlbumes.push(Album);
+    newAlbumes.forEach((album: Album) => {
+      album.getGenres().forEach((genre_: genres) => {
+        if (genre_ === this.genre && !this.myAlbumes.includes(album)) {
+          this.myAlbumes.push(album);
         }
       });
     });
@@ -108,10 +108,10 @@ export class MusicGenre {
 
   setSongs(newSongs: Song[]) {
     this.mySongs = [];
-    newSongs.forEach((Song: Song) => {
-      Song.getGenres().forEach((genre_: genres) => {
-        if (genre_ === this.genre && !this.mySongs.includes(Song)) {
-          this.mySongs.push(Song);
+    newSongs.forEach((song: Song) => {
+      song.getGenres().forEach((genre_: genres) => {
+        if (genre_ === this.genre && !this.mySongs.includes(song)) {
+          this.mySongs.push(song);
         }
       });
     });
