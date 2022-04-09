@@ -87,7 +87,7 @@ export class Artist {
 
   removeGroup(delGroup: Group) {
     const posGroup = this.groups.indexOf(delGroup);
-    if (posGroup > -1) this.albumes.splice(posGroup, 1);
+    if (posGroup > -1) this.groups.splice(posGroup, 1);
   }
 
   addAlbum(newAlbum: Album) {
