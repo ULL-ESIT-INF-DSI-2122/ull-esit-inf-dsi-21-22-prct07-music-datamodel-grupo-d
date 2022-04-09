@@ -27,7 +27,7 @@ describe("Pruebas de la clase Artist.", () => {
     expect(MichaelJackson.totalListeners()).to.eql(27097127);
     expect(MichaelJackson.getGroups()).to.eql([tmpGroup]);
   });
-  it("Otors Metodos", () => {
+  it("Otros Metodos", () => {
     MichaelJackson.removeGroup(new Group("", [], new Date("1999"), 1));
     MichaelJackson.removeAlbum(new Album("", tmpGroup, new Date("1999"), []));
   });
