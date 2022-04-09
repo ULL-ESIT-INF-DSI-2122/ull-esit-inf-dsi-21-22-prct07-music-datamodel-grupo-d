@@ -23,7 +23,8 @@ describe("Pruebas de la clase Artist.", () => {
     expect(MichaelJackson.getGenres()).to.eql(["rock"]);
     expect(MichaelJackson.getAlbumes()).to.eql([tmpAlbum]);
     expect(MichaelJackson.getSongs()).to.eql([BigInJapan]);
-    expect(MichaelJackson.getListeners()).to.eql(27097127);
+    expect(MichaelJackson.getListeners()).to.eql(27097126);
+    expect(MichaelJackson.totalListeners()).to.eql(27097127);
     expect(MichaelJackson.getGroups()).to.eql([tmpGroup]);
   });
 });

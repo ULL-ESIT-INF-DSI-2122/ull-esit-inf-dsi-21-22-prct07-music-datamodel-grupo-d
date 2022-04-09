@@ -12,7 +12,7 @@ import { Song } from "../song";
  * Guarda lo que recibe como parametro
  * @param albumes Vector de Albumes a guardar
  */
-export function saveAlbumsOnDB(albumes: Album[]): void {
+export function saveAlbumesOnDB(albumes: Album[]): void {
   // Añade todo el vector de Albumes
   albumes.forEach((album: Album) => {
     addAlbumToDB(album);

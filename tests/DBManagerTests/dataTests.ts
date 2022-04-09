@@ -92,8 +92,40 @@ export const allArtists: Artist[] = [
   new Artist("Paul McCartney", [], 4984651),
 ];
 
+export const allArtistsEmptys: Artist[] = [
+  new Artist("Michael Jackson", [allSongs[0], allSongs[1], allSongs[2], allSongs[3], allSongs[4]], 15645132),
+  new Artist("Elvis Presley", [allSongs[10], allSongs[11], allSongs[12], allSongs[13], allSongs[14]], 65465461),
+  new Artist("James Brown", [allSongs[15], allSongs[16], allSongs[17], allSongs[18], allSongs[19]], 12893213),
+  new Artist("Louis Armstrong", [allSongs[30], allSongs[31], allSongs[32], allSongs[33], allSongs[34]], 57554452),
+  new Artist("Wolfgang Amadeus Mozart", [allSongs[35], allSongs[36], allSongs[37], allSongs[38], allSongs[39]], 57786452),
+  // Artist in Groups
+  // Blues Saraceno
+  new Artist("Richie Kotzen", [], 4984651),
+  new Artist("Bobby Dall", [], 4984651),
+  // The Mills Brothers
+  new Artist("Harry Mills", [], 4984651),
+  new Artist("John Mills Jr.", [], 4984651),
+  // The temptations
+  new Artist("Paul Williams", [], 4984651),
+  new Artist("David Ruffin", [], 4984651),
+  // The Rolling Stones
+  new Artist("Mick Jagger", [], 4984651),
+  new Artist("Keith Richards", [], 4984651),
+  // The Beatles
+  new Artist("John Lennon", [], 4984651),
+  new Artist("Paul McCartney", [], 4984651),
+];
+
 // Groups
 export const allGroups: Group[] = [
+  new Group("Blues Saraceno", [allArtists[5], allArtists[6]], new Date("2019"), 576452),
+  new Group("The Mills Brothers", [allArtists[7], allArtists[8]], new Date("1928"), 927362),
+  new Group("The temptations", [allArtists[9], allArtists[10]], new Date("1980"), 828291),
+  new Group("Te Rolling Stones", [allArtists[11], allArtists[12]], new Date("1970"), 6456561),
+  new Group("The Beatles", [allArtists[13], allArtists[14]], new Date("1960"), 15645132),
+];
+
+export const allGroupsEmptys: Group[] = [
   new Group("Blues Saraceno", [allArtists[5], allArtists[6]], new Date("2019"), 576452),
   new Group("The Mills Brothers", [allArtists[7], allArtists[8]], new Date("1928"), 927362),
   new Group("The temptations", [allArtists[9], allArtists[10]], new Date("1980"), 828291),

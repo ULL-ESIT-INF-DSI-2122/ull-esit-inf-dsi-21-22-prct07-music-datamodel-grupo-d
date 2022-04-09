@@ -48,11 +48,7 @@ export class Artist {
     return this.songs;
   }
   getListeners() {
-    let total = 0;
-    this.groups.forEach((grupo: Group) =>{
-      total += grupo.getListeners();
-    });
-    return total + this.listeners;
+    return this.listeners;
   }
   getGroups() {
     return this.groups;
@@ -79,6 +75,14 @@ export class Artist {
         }
       });
     });
+  }
+
+  totalListeners() {
+    let total = 0;
+    this.groups.forEach((grupo: Group) =>{
+      total += grupo.getListeners();
+    });
+    return total + this.listeners;
   }
 
   addGroup(newGroup: Group) {
