@@ -18,7 +18,7 @@ describe("Pruebas de la clase MusicGenres.", () => {
   it("Prueba de los setters.", () => {
     Reguae.setGenre("reguae");
     Reguae.setArtists([JohnLennon]);
-    Reguae.setGroups([TheBeatles]);
+    Reguae.setGroups([TheBeatles, new Group("", [], new Date("1999"), 1)]);
     Reguae.setAlbumes([Thriller]);
     Reguae.setSongs([HeyJude]);
   });
