@@ -33,6 +33,20 @@ export class Gestor {
     this.usersPlaylists = loadUsersPlaylistsFromDB(this.songs);
   }
 
+  private showPlaylistRawInfo(playlist: Playlist, index: number) {
+    // Calculamos la duracion en horas minutos y segundos
+    let hour: number | string = parseInt((playlist.getDuration() / 3600).toFixed(0));
+    let min: number | string = parseInt((playlist.getDuration() / 60).toFixed(0));
+    let seg: number | string = playlist.getDuration() % 60;
+    if (hour < 10 && hour > 0) hour = "0" + hour;
+    if (min < 10 && min > 0) min = "0" + min;
+    if (seg < 10 && seg > 0) seg = "0" + seg;
+
+    return ({name: playlist.getName() +
+      "\n  * Genres: " + playlist.getGenres().join(", ") +
+      "\n  * Durations: " + hour + ":" + min + ":" + seg, value: index});
+  }
+
   start() {
     // Tipo de dato para creaar las opciones
     type viewPlaylistJSON = {
@@ -42,17 +56,7 @@ export class Gestor {
     // Vectores de opciones
     const options: viewPlaylistJSON[] = [];
     this.playlists.forEach((playlist: Playlist, index: number) => {
-      // Calculamos la duracion en horas minutos y segundos
-      let hour: number | string = parseInt((playlist.getDuration() / 3600).toFixed(0));
-      let min: number | string = parseInt((playlist.getDuration() / 60).toFixed(0));
-      let seg: number | string = playlist.getDuration() % 60;
-      if (hour < 10 && hour > 0) hour = "0" + hour;
-      if (min < 10 && min > 0) min = "0" + min;
-      if (seg < 10 && seg > 0) seg = "0" + seg;
-
-      options.push({name: playlist.getName() +
-        "\n  * Genres: " + playlist.getGenres().join(", ") +
-        "\n  * Durations: " + hour + ":" + min + ":" + seg, value: index});
+      options.push(this.showPlaylistRawInfo(playlist, index));
     });
 
     // Opciones para salir y ver las playlist del usuario
@@ -91,17 +95,7 @@ export class Gestor {
     // Vectores de opciones
     const options: viewPlaylistJSON[] = [];
     this.usersPlaylists.forEach((playlist: Playlist, index: number) => {
-      // Calculamos la duracion en horas minutos y segundos
-      let hour: number | string = parseInt((playlist.getDuration() / 3600).toFixed(0));
-      let min: number | string = parseInt((playlist.getDuration() / 60).toFixed(0));
-      let seg: number | string = playlist.getDuration() % 60;
-      if (hour < 10 && hour > 0) hour = "0" + hour;
-      if (min < 10 && min > 0) min = "0" + min;
-      if (seg < 10 && seg > 0) seg = "0" + seg;
-
-      options.push({name: playlist.getName() +
-        "\n  * Genres: " + playlist.getGenres().join(", ") +
-        "\n  * Durations: " + hour + ":" + min + ":" + seg, value: index});
+      options.push(this.showPlaylistRawInfo(playlist, index));
     });
 
     // Opciones para salir y ver las playlist del usuario
