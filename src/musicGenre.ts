@@ -35,34 +35,10 @@ export class MusicGenre {
   private myAlbumes: Album[] = [];
   private mySongs: Song[] = [];
   constructor(private genre: genres, allSongs: Song[], allArtists: Artist[], allGroups: Group[], allAlbumes: Album[]) {
-    allArtists.forEach((Artist: Artist) => {
-      Artist.getGenres().forEach((genre_: genres) => {
-        if (genre_ === genre && !this.myArtists.includes(Artist)) {
-          this.myArtists.push(Artist);
-        }
-      });
-    });
-    allGroups.forEach((Grupo: Group) => {
-      Grupo.getGenres().forEach((genre_: genres) => {
-        if (genre_ === genre && !this.myGroups.includes(Grupo)) {
-          this.myGroups.push(Grupo);
-        }
-      });
-    });
-    allAlbumes.forEach((Album: Album) => {
-      Album.getGenres().forEach((genre_: genres) => {
-        if (genre_ === genre && !this.myAlbumes.includes(Album)) {
-          this.myAlbumes.push(Album);
-        }
-      });
-    });
-    allSongs.forEach((Song: Song) => {
-      Song.getGenres().forEach((genre_: genres) => {
-        if (genre_ === genre && !this.mySongs.includes(Song)) {
-          this.mySongs.push(Song);
-        }
-      });
-    });
+    this.setArtists(allArtists);
+    this.setGroups(allGroups);
+    this.setAlbumes(allAlbumes);
+    this.setSongs(allSongs);
   }
 
   // ----------------------------------------------
