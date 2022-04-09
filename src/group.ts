@@ -58,7 +58,7 @@ export class Group {
   }
   // ----------------------------------------------------------
   // Setters
-  setGroupName(newName:string) {
+  setName(newName:string) {
     this.name = newName;
   }
   setArtist(newArtist:Artist[]) {
@@ -73,9 +73,6 @@ export class Group {
   setYear(newCreationYear:Date) {
     this.creationYear = newCreationYear;
   }
-  setAlbum(newAlbumes: Album[]) {
-    this.albumes = newAlbumes;
-  }
   setListeners(listeners:number) {
     this.listeners = listeners;
   }
@@ -86,6 +83,6 @@ export class Group {
   }
   removeAlbum(delAlbum: Album) {
     const posAlbum = this.albumes.indexOf(delAlbum);
-    posAlbum > -1 ? this.albumes.splice(posAlbum, 1) : '';
+    if (posAlbum > -1) this.albumes.splice(posAlbum, 1);
   }
 }

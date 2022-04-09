@@ -71,8 +71,8 @@ export class Playlist {
 
   // Elimina una cancion si existe
   removeSong(removeSong: Song) {
-    const pos = this.songs.indexOf(removeSong);
-    pos > -1 ? this.songs.splice(pos, 1) : "";
+    const posSong = this.songs.indexOf(removeSong);
+    if (posSong > -1) this.songs.splice(posSong, 1);
     this.refreshData();
   }
 }
