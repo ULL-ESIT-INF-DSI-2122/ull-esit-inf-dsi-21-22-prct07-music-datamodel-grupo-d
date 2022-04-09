@@ -8,7 +8,7 @@ import { Album } from "../../src/album";
 describe("Pruebas de la clase Group.", () => {
   const HeyJude = new Song("Hey Jude", "The Beatles", 487, ["reguae"], false, 1200000000);
   const JohnLennon = new Artist("John Lennon", [HeyJude], 15645132);
-  const TheBeatles: Group = new Group("The Beatles", [JohnLennon], new Date("1998"), 1);
+  const TheBeatles: Group = new Group("The Beatles", [JohnLennon, JohnLennon], new Date("1998"), 1);
   const tmpAlbum: Album = new Album("Album Prueba", TheBeatles, new Date("1998"), [HeyJude]);
   it("Pruebas exitencia clase Grupo", () => {
     expect(TheBeatles).not.be.null;
@@ -29,5 +29,6 @@ describe("Pruebas de la clase Group.", () => {
   });
   it("Otros Metodos", () => {
     TheBeatles.setArtist([]);
+    TheBeatles.removeAlbum(new Album("", new Artist("", [], 1), new Date("1999"), []));
   });
 });
