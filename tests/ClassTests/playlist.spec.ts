@@ -20,6 +20,7 @@ describe("Pruebas de la clase Playlist.", () => {
     playlist1.setSongs([allSongs[0], allSongs[1]]);
     playlist1.addSong(allSongs[4]);
     playlist1.removeSong(allSongs[4]);
+    playlist1.removeSong(allSongs[3]);
   });
   it("Pruebas Getters.", () => {
     expect(playlist1.getName()).to.eql("Playlist Pop");
