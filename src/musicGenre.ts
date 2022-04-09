@@ -74,6 +74,7 @@ export class MusicGenre {
   }
 
   setArtists(newArtists: Artist[]) {
+    this.myArtists = [];
     newArtists.forEach((Artist: Artist) => {
       Artist.getGenres().forEach((genre_: genres) => {
         if (genre_ === this.genre && !this.myArtists.includes(Artist)) {
@@ -84,6 +85,7 @@ export class MusicGenre {
   }
 
   setGroups(newGroups: Group[]){
+    this.myGroups = [];
     newGroups.forEach((Grupo: Group) => {
       Grupo.getGenres().forEach((genre_: genres) => {
         if (genre_ === this.genre && !this.myGroups.includes(Grupo)) {
@@ -94,6 +96,7 @@ export class MusicGenre {
   }
 
   setAlbumes(newAlbumes: Album[]) {
+    this.myAlbumes = [];
     newAlbumes.forEach((Album: Album) => {
       Album.getGenres().forEach((genre_: genres) => {
         if (genre_ === this.genre && !this.myAlbumes.includes(Album)) {
@@ -104,6 +107,7 @@ export class MusicGenre {
   }
 
   setSongs(newSongs: Song[]) {
+    this.mySongs = [];
     newSongs.forEach((Song: Song) => {
       Song.getGenres().forEach((genre_: genres) => {
         if (genre_ === this.genre && !this.mySongs.includes(Song)) {
