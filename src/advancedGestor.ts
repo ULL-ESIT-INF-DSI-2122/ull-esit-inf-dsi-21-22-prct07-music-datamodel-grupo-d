@@ -87,15 +87,15 @@ export class AdvancedGestor {
     const myPlaylist: Playlist[] = [];
     artist.getSongs().forEach((song: Song) => {
       this.allPlaylists.forEach((playlist: Playlist) => {
-        playlist.getSongs().includes(song) ? myPlaylist.includes(playlist) ? "" : myPlaylist.push(playlist) : "";
+        if (playlist.getSongs().includes(song) && !myPlaylist.includes(playlist)) myPlaylist.push(playlist);
       });
     });
 
     const options: {name: string, value: number}[] = [];
 
-    artist.getSongs().length > 0 ? options.push({name: "Songs", value: 0}) : "";
-    myPlaylist.length > 0 ? options.push({name: "Playlists", value: 1}) : "";
-    artist.getAlbumes().length > 0 ? options.push({name: "Albumes", value: 2}) : "";
+    if (artist.getSongs().length > 0) options.push({name: "Songs", value: 0});
+    if (myPlaylist.length > 0) options.push({name: "Playlists", value: 1});
+    if (artist.getAlbumes().length > 0) options.push({name: "Albumes", value: 2});
     options.push({name: "Back", value: -1});
 
     inquire.prompt({
@@ -150,7 +150,7 @@ export class AdvancedGestor {
 
     const options: {name: string, value: number}[] = [];
 
-    group.getAlbum().length > 0 ? options.push({name: "Albumes", value: 0}) : "";
+    if (group.getAlbum().length > 0) options.push({name: "Albumes", value: 0});
     options.push({name: "Back", value: -1});
 
     inquire.prompt({
@@ -207,12 +207,12 @@ export class AdvancedGestor {
     }
 
     // Al revez
-    reverse ? object.reverse() : "";
+    if (reverse) object.reverse();
 
     // Mostramos los datos
     object.forEach((element: Song | Playlist | Album) => {
-      if (sort === 4 && element instanceof Song) { // En caso del sort ser por single, solo se muestran los single
-        element.getSingle() ? console.log(element.getName()) : "";
+      if (sort === 4 && element instanceof Song && element.getSingle()) { // En caso del sort ser por single, solo se muestran los single
+        console.log(element.getName());
       } else { // E.O.C se muestra todo
         console.log(element.getName());
       }

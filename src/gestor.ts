@@ -161,7 +161,7 @@ export class Gestor {
           break;
         case 2:
           const pos: number = this.usersPlaylists.indexOf(playlist);
-          pos >= 0 ? this.usersPlaylists.splice(pos, 1): "";
+          if (pos >= 0) this.usersPlaylists.splice(pos, 1);
           saveUsersPlaylistsOnDB(this.usersPlaylists);
           this.userPlayList();
           break;
@@ -225,7 +225,7 @@ export class Gestor {
           break;
         case 3:
           addUsersPlaylistToDB(playlist);
-          this.usersPlaylists.includes(playlist) ? "" : this.usersPlaylists.push(playlist);
+          if (!this.usersPlaylists.includes(playlist)) this.usersPlaylists.push(playlist);
           this.userPlayList();
           break;
 
@@ -250,7 +250,7 @@ export class Gestor {
         const removeSong = this.songs.find((song: Song) => {
           return song.getName() === nameSong;
         });
-        removeSong ? playlist.removeSong(removeSong) : "";
+        if (removeSong) playlist.removeSong(removeSong);
       });
       // Para actualizar los cambios hechos
       saveUsersPlaylistsOnDB(this.usersPlaylists);
@@ -273,7 +273,7 @@ export class Gestor {
         const addSong = this.songs.find((song: Song) => {
           return song.getName() === nameSong;
         });
-        addSong ? playlist.addSong(addSong) : "";
+        if (addSong) playlist.addSong(addSong);
       });
       // Para actualizar los cambios hechos
       saveUsersPlaylistsOnDB(this.usersPlaylists);
