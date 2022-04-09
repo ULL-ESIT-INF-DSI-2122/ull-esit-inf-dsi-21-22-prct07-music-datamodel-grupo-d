@@ -213,7 +213,7 @@ export class AdvancedGestor {
     object.forEach((element: Song | Playlist | Album) => {
       if (sort === 4 && element instanceof Song && element.getSingle()) { // En caso del sort ser por single, solo se muestran los single
         console.log(element.getName());
-      } else { // E.O.C se muestra todo
+      } else if (sort !== 4) { // E.O.C se muestra todo
         console.log(element.getName());
       }
     });
