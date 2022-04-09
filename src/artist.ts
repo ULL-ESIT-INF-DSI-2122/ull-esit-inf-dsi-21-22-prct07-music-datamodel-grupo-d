@@ -28,7 +28,10 @@ import { Song } from "./song";
 export class Artist {
   private groups: Group[] = [];
   private albumes: Album[] = [];
-  constructor(private name: string, private genres: genres[], private songs: Song[], private listeners: number){}
+  private genres: genres[]= [];
+  constructor(private name: string, private songs: Song[], private listeners: number){
+    this.refereshData();
+  }
 
   // ----------------------------------
   // getters
@@ -45,7 +48,11 @@ export class Artist {
     return this.songs;
   }
   getListeners() {
-    return this.listeners;
+    let total = 0;
+    this.groups.forEach((grupo: Group) =>{
+      total += grupo.getListeners();
+    });
+    return total + this.listeners;
   }
   getGroups() {
     return this.groups;
@@ -55,24 +62,32 @@ export class Artist {
   setName(newName:string) {
     this.name = newName;
   }
-  setGenres(newGenre: genres[]) {
-    this.genres = newGenre;
-  }
   setSongs(newSongs: Song[]) {
     this.songs = newSongs;
+    this.refereshData();
   }
   setListeners(newListeners: number) {
     this.listeners = newListeners;
   }
   // -----------------------------------
   // Métodos.
+  private refereshData() {
+    this.songs.forEach((song: Song) => {
+      song.getGenres().forEach((genre: genres) => {
+        if (!this.genres.includes(genre)) {
+          this.genres.push(genre);
+        }
+      });
+    });
+  }
+
   addGroup(newGroup: Group) {
     this.groups.push(newGroup);
   }
 
   removeGroup(delGroup: Group) {
     const posGroup = this.groups.indexOf(delGroup);
-    posGroup > -1 ? this.albumes.splice(posGroup, 1) : '';
+    if (posGroup > -1) this.albumes.splice(posGroup, 1);
   }
 
   addAlbum(newAlbum: Album) {
@@ -81,6 +96,6 @@ export class Artist {
 
   removeAlbum(delAlbum: Album) {
     const posAlbum = this.albumes.indexOf(delAlbum);
-    posAlbum > -1 ? this.albumes.splice(posAlbum, 1) : '';
+    if (posAlbum > -1) this.albumes.splice(posAlbum, 1);
   }
 }

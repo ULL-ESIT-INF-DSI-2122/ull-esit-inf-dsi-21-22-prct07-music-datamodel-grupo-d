@@ -1,20 +1,66 @@
 {
   "Playlists": [
     {
-      "name": "Playlist 1",
+      "name": "Playlist1",
       "songs": [
-        "Mami",
-        "Virtual Diva",
-        "Ella y Yo"
+        "Dirty Diana",
+        "Human nature",
+        "Black or white",
+        "Thriller",
+        "Beat it",
+        "Angie",
+        "Miss You",
+        "Brown Sugar",
+        "Wild Horses",
+        "Star Star",
+        "That’s All Right",
+        "Always On My Mind",
+        "Suspicious Minds",
+        "Viva Las Vegas",
+        "Heartbreak Hotel",
+        "I Feel Good"
       ]
     },
     {
-      "name": "Playlist 2",
+      "name": "Playlist2",
       "songs": [
-        "Mami",
-        "Virtual Diva",
-        "Ella y Yo",
-        "Virtual Diva"
+        "Try Me",
+        "The Boss",
+        "The Payback",
+        "Soul Power",
+        "Treat Her Like A Lady",
+        "My Girl",
+        "Get Ready",
+        "Stay",
+        "Lady Soul",
+        "Paper Doll",
+        "Standing On The Corner ",
+        "Yellow Bird",
+        "Honeysuckle Rose",
+        "You Always Hurt The One You Love",
+        "Hello, Dolly!",
+        "We Have All The Time In The World"
+      ]
+    },
+    {
+      "name": "Playlist3",
+      "songs": [
+        "What A Wonderful World",
+        "When It's Sleepy Time Down South",
+        "When The Saints Go Marching In",
+        "Elvira Madigan",
+        "La Clemenza di Tito",
+        "The Marriage of Figaro Overture",
+        "Réquiem",
+        "Turkish March",
+        "Dogs of war",
+        "Derriver",
+        "Grave digger",
+        "Carry me back home",
+        "The devil you know",
+        "Here comes the sun",
+        "Hey Jude",
+        "Let it be"
       ]
     }
   ]

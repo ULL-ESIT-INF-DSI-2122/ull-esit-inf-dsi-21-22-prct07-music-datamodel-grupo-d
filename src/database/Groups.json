@@ -1,32 +1,49 @@
 {
   "Groups": [
     {
-      "name": "Grupo 1",
+      "name": "Blues Saraceno",
       "artists": [
-        "Artista 2",
-        "Artista 3"
+        "Richie Kotzen",
+        "Bobby Dall"
       ],
-      "year": "1999-01-01T00:00:00.000Z",
-      "listeners": 1245
+      "year": "2019-01-01T00:00:00.000Z",
+      "listeners": 576452
     },
     {
-      "name": "Grupo 2",
+      "name": "The Mills Brothers",
       "artists": [
-        "Artista 1",
-        "Artista 3"
+        "Harry Mills",
+        "John Mills Jr."
       ],
-      "year": "1988-01-01T00:00:00.000Z",
-      "listeners": 5454
+      "year": "1928-01-01T00:00:00.000Z",
+      "listeners": 927362
     },
     {
-      "name": "Grupo 3",
+      "name": "The temptations",
       "artists": [
-        "Artista 1",
-        "Artista 2",
-        "Artista 3"
+        "Paul Williams",
+        "David Ruffin"
       ],
-      "year": "1950-01-01T00:00:00.000Z",
-      "listeners": 874
+      "year": "1980-01-01T00:00:00.000Z",
+      "listeners": 828291
+    },
+    {
+      "name": "Te Rolling Stones",
+      "artists": [
+        "Mick Jagger",
+        "Keith Richards"
+      ],
+      "year": "1970-01-01T00:00:00.000Z",
+      "listeners": 6456561
+    },
+    {
+      "name": "The Beatles",
+      "artists": [
+        "John Lennon",
+        "Paul McCartney"
+      ],
+      "year": "1960-01-01T00:00:00.000Z",
+      "listeners": 15645132
     }
   ]
 }

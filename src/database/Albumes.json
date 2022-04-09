@@ -1,37 +1,55 @@
 {
   "Albumes": [
     {
-      "name": "Album 1",
-      "GroupOrArtist": "Artista 1",
-      "year": "1999-12-18T00:00:00.000Z",
+      "name": "Thriller",
+      "GroupOrArtist": "Michael Jackson",
+      "year": "1982-01-01T00:00:00.000Z",
       "songs": [
-        "Mami",
-        "Virtual Diva"
+        "Thriller",
+        "Human nature"
       ]
     },
     {
-      "name": "Album 2",
-      "GroupOrArtist": "Artista 2",
-      "year": "2010-05-02T00:00:00.000Z",
+      "name": "Bad",
+      "GroupOrArtist": "Michael Jackson",
+      "year": "1987-01-01T00:00:00.000Z",
       "songs": [
-        "Virtual Diva"
+        "Black or white",
+        "Dirty Diana",
+        "Beat it"
       ]
     },
     {
-      "name": "Album 3",
-      "GroupOrArtist": "Grupo 1",
-      "year": "2000-10-24T00:00:00.000Z",
+      "name": "Never look back",
+      "GroupOrArtist": "Blues Saraceno",
+      "year": "1999-01-01T00:00:00.000Z",
       "songs": [
-        "Ella y Yo"
+        "Dogs of war",
+        "Derriver",
+        "Grave digger",
+        "Carry me back home"
       ]
     },
     {
-      "name": "Album 4",
-      "GroupOrArtist": "Grupo 1",
-      "year": "2000-11-24T00:00:00.000Z",
+      "name": "Hey Jude",
+      "GroupOrArtist": "The Beatles",
+      "year": "1968-01-01T00:00:00.000Z",
       "songs": [
-        "Ella y Yo",
-        "Virtual Diva"
+        "In My Life",
+        "Something",
+        "Let it be"
+      ]
+    },
+    {
+      "name": "The Very Best of the Mills Brothers",
+      "GroupOrArtist": "The Mills Brothers",
+      "year": "1977-01-01T00:00:00.000Z",
+      "songs": [
+        "Paper Doll",
+        "Standing On The Corner ",
+        "Yellow Bird",
+        "Honeysuckle Rose",
+        "You Always Hurt The One You Love"
       ]
     }
   ]

@@ -1,36 +1,504 @@
 {
   "Songs": [
     {
-      "name": "Mami",
-      "author": "Becky G & Karol G",
-      "duration": 227,
+      "name": "Dirty Diana",
+      "author": "Michael Jackson",
+      "duration": 305,
       "genres": [
-        "country",
-        "funk"
-      ],
-      "single": false,
-      "numReproTotal": 112725546
-    },
-    {
-      "name": "Virtual Diva",
-      "author": "Don Omar",
-      "duration": 312,
-      "genres": [
-        "pop",
-        "reguae"
+        "pop"
       ],
       "single": true,
-      "numReproTotal": 401191778
+      "numReproTotal": 155000000
     },
     {
-      "name": "Ella y Yo",
-      "author": "Aventura",
+      "name": "Human nature",
+      "author": "Michael Jackson",
+      "duration": 204,
+      "genres": [
+        "pop"
+      ],
+      "single": true,
+      "numReproTotal": 135000000
+    },
+    {
+      "name": "Black or white",
+      "author": "Michael Jackson",
+      "duration": 199,
+      "genres": [
+        "pop"
+      ],
+      "single": true,
+      "numReproTotal": 85000000
+    },
+    {
+      "name": "Thriller",
+      "author": "Michael Jackson",
+      "duration": 822,
+      "genres": [
+        "pop"
+      ],
+      "single": true,
+      "numReproTotal": 500000000
+    },
+    {
+      "name": "Beat it",
+      "author": "Michael Jackson",
+      "duration": 300,
+      "genres": [
+        "pop"
+      ],
+      "single": true,
+      "numReproTotal": 235000000
+    },
+    {
+      "name": "Angie",
+      "author": "Te Rolling Stones",
+      "duration": 279,
+      "genres": [
+        "heavy"
+      ],
+      "single": false,
+      "numReproTotal": 56000000
+    },
+    {
+      "name": "Miss You",
+      "author": "The Rolling Stones",
+      "duration": 330,
+      "genres": [
+        "heavy"
+      ],
+      "single": false,
+      "numReproTotal": 14000000
+    },
+    {
+      "name": "Brown Sugar",
+      "author": "The Rolling Stones",
+      "duration": 202,
+      "genres": [
+        "heavy"
+      ],
+      "single": false,
+      "numReproTotal": 7000000
+    },
+    {
+      "name": "Wild Horses",
+      "author": "The Rolling Stones",
+      "duration": 348,
+      "genres": [
+        "heavy"
+      ],
+      "single": false,
+      "numReproTotal": 22000000
+    },
+    {
+      "name": "Star Star",
+      "author": "The Rolling Stones",
+      "duration": 265,
+      "genres": [
+        "heavy"
+      ],
+      "single": false,
+      "numReproTotal": 1000000
+    },
+    {
+      "name": "That’s All Right",
+      "author": "Elvis Presley",
+      "duration": 117,
+      "genres": [
+        "rock"
+      ],
+      "single": true,
+      "numReproTotal": 150000000
+    },
+    {
+      "name": "Always On My Mind",
+      "author": "Elvis presley",
+      "duration": 319,
+      "genres": [
+        "rock"
+      ],
+      "single": true,
+      "numReproTotal": 120000000
+    },
+    {
+      "name": "Suspicious Minds",
+      "author": "Elvis Presley",
       "duration": 274,
+      "genres": [
+        "rock"
+      ],
+      "single": true,
+      "numReproTotal": 190000000
+    },
+    {
+      "name": "Viva Las Vegas",
+      "author": "Elvis Presley",
+      "duration": 189,
+      "genres": [
+        "rock"
+      ],
+      "single": true,
+      "numReproTotal": 900000000
+    },
+    {
+      "name": "Heartbreak Hotel",
+      "author": "Elvis Presley",
+      "duration": 129,
+      "genres": [
+        "rock"
+      ],
+      "single": true,
+      "numReproTotal": 100000000
+    },
+    {
+      "name": "I Feel Good",
+      "author": "James Brown",
+      "duration": 165,
+      "genres": [
+        "funk"
+      ],
+      "single": true,
+      "numReproTotal": 80000000
+    },
+    {
+      "name": "Try Me",
+      "author": "James Brown",
+      "duration": 149,
+      "genres": [
+        "funk"
+      ],
+      "single": true,
+      "numReproTotal": 38000000
+    },
+    {
+      "name": "The Boss",
+      "author": "James Brown",
+      "duration": 195,
+      "genres": [
+        "funk"
+      ],
+      "single": true,
+      "numReproTotal": 11000000
+    },
+    {
+      "name": "The Payback",
+      "author": "James Brown",
+      "duration": 457,
+      "genres": [
+        "funk"
+      ],
+      "single": true,
+      "numReproTotal": 19000000
+    },
+    {
+      "name": "Soul Power",
+      "author": "James Brown",
+      "duration": 494,
+      "genres": [
+        "funk"
+      ],
+      "single": true,
+      "numReproTotal": 8000000
+    },
+    {
+      "name": "Treat Her Like A Lady",
+      "author": "The temptations",
+      "duration": 282,
+      "genres": [
+        "musica disco"
+      ],
+      "single": false,
+      "numReproTotal": 2000000
+    },
+    {
+      "name": "My Girl",
+      "author": "The temptations",
+      "duration": 180,
+      "genres": [
+        "musica disco"
+      ],
+      "single": false,
+      "numReproTotal": 9000000
+    },
+    {
+      "name": "Get Ready",
+      "author": "The temptations",
+      "duration": 154,
+      "genres": [
+        "musica disco"
+      ],
+      "single": false,
+      "numReproTotal": 7000000
+    },
+    {
+      "name": "Stay",
+      "author": "The temptations",
+      "duration": 287,
+      "genres": [
+        "musica disco"
+      ],
+      "single": false,
+      "numReproTotal": 3000000
+    },
+    {
+      "name": "Lady Soul",
+      "author": "The temptations",
+      "duration": 303,
+      "genres": [
+        "musica disco"
+      ],
+      "single": false,
+      "numReproTotal": 2000000
+    },
+    {
+      "name": "Paper Doll",
+      "author": "The Mills Brothers",
+      "duration": 170,
+      "genres": [
+        "soul"
+      ],
+      "single": false,
+      "numReproTotal": 2000000
+    },
+    {
+      "name": "Standing On The Corner ",
+      "author": "The Mills Brothers",
+      "duration": 136,
+      "genres": [
+        "soul"
+      ],
+      "single": false,
+      "numReproTotal": 2000000
+    },
+    {
+      "name": "Yellow Bird",
+      "author": "The Mills Brothers",
+      "duration": 152,
+      "genres": [
+        "soul"
+      ],
+      "single": false,
+      "numReproTotal": 2000000
+    },
+    {
+      "name": "Honeysuckle Rose",
+      "author": "The Mills Brothers",
+      "duration": 186,
+      "genres": [
+        "soul"
+      ],
+      "single": false,
+      "numReproTotal": 2000000
+    },
+    {
+      "name": "You Always Hurt The One You Love",
+      "author": "The Mills Brothers",
+      "duration": 201,
+      "genres": [
+        "soul"
+      ],
+      "single": false,
+      "numReproTotal": 2000000
+    },
+    {
+      "name": "Hello, Dolly!",
+      "author": "Louis Armstrong",
+      "duration": 368,
+      "genres": [
+        "jazz"
+      ],
+      "single": true,
+      "numReproTotal": 11000000
+    },
+    {
+      "name": "We Have All The Time In The World",
+      "author": "Louis Armstrong",
+      "duration": 194,
+      "genres": [
+        "jazz"
+      ],
+      "single": true,
+      "numReproTotal": 5000000
+    },
+    {
+      "name": "What A Wonderful World",
+      "author": "Louis Armstrong",
+      "duration": 149,
+      "genres": [
+        "jazz"
+      ],
+      "single": true,
+      "numReproTotal": 41000000
+    },
+    {
+      "name": "When It's Sleepy Time Down South",
+      "author": "Louis Armstrong",
+      "duration": 215,
+      "genres": [
+        "jazz"
+      ],
+      "single": true,
+      "numReproTotal": 1000000
+    },
+    {
+      "name": "When The Saints Go Marching In",
+      "author": "Louis Armstrong",
+      "duration": 286,
+      "genres": [
+        "jazz"
+      ],
+      "single": true,
+      "numReproTotal": 27000000
+    },
+    {
+      "name": "Elvira Madigan",
+      "author": "Wolfgang Amadeus Mozart",
+      "duration": 403,
       "genres": [
         "musica clasica"
       ],
+      "single": true,
+      "numReproTotal": 2000000
+    },
+    {
+      "name": "La Clemenza di Tito",
+      "author": "Wolfgang Amadeus Mozart",
+      "duration": 295,
+      "genres": [
+        "musica clasica"
+      ],
+      "single": true,
+      "numReproTotal": 1000000
+    },
+    {
+      "name": "The Marriage of Figaro Overture",
+      "author": "Wolfgang Amadeus Mozart",
+      "duration": 267,
+      "genres": [
+        "musica clasica"
+      ],
+      "single": true,
+      "numReproTotal": 600000
+    },
+    {
+      "name": "Réquiem",
+      "author": "Wolfgang Amadeus Mozart",
+      "duration": 533,
+      "genres": [
+        "musica clasica"
+      ],
+      "single": true,
+      "numReproTotal": 210400000
+    },
+    {
+      "name": "Turkish March",
+      "author": "Wolfgang Amadeus Mozart",
+      "duration": 403,
+      "genres": [
+        "musica clasica"
+      ],
+      "single": true,
+      "numReproTotal": 1700000
+    },
+    {
+      "name": "Dogs of war",
+      "author": "Blues Saraceno",
+      "duration": 287,
+      "genres": [
+        "country"
+      ],
       "single": false,
-      "numReproTotal": 307982478
+      "numReproTotal": 33000000
+    },
+    {
+      "name": "Derriver",
+      "author": "Blues Saraceno",
+      "duration": 564,
+      "genres": [
+        "country"
+      ],
+      "single": false,
+      "numReproTotal": 210000000
+    },
+    {
+      "name": "Grave digger",
+      "author": "Blues Saraceno",
+      "duration": 444,
+      "genres": [
+        "country"
+      ],
+      "single": false,
+      "numReproTotal": 12000000
+    },
+    {
+      "name": "Carry me back home",
+      "author": "Blues Saraceno",
+      "duration": 507,
+      "genres": [
+        "country"
+      ],
+      "single": false,
+      "numReproTotal": 11000000
+    },
+    {
+      "name": "The devil you know",
+      "author": "Blues Saraceno",
+      "duration": 269,
+      "genres": [
+        "country"
+      ],
+      "single": false,
+      "numReproTotal": 25000000
+    },
+    {
+      "name": "Here comes the sun",
+      "author": "The Beatles",
+      "duration": 192,
+      "genres": [
+        "reguae"
+      ],
+      "single": false,
+      "numReproTotal": 70000000
+    },
+    {
+      "name": "Hey Jude",
+      "author": "The Beatles",
+      "duration": 487,
+      "genres": [
+        "reguae"
+      ],
+      "single": false,
+      "numReproTotal": 1200000000
+    },
+    {
+      "name": "Let it be",
+      "author": "The Beatles",
+      "duration": 244,
+      "genres": [
+        "reguae"
+      ],
+      "single": false,
+      "numReproTotal": 560000000
+    },
+    {
+      "name": "Something",
+      "author": "The Beatles",
+      "duration": 188,
+      "genres": [
+        "reguae"
+      ],
+      "single": false,
+      "numReproTotal": 645000000
+    },
+    {
+      "name": "In My Life",
+      "author": "The Beatles",
+      "duration": 147,
+      "genres": [
+        "reguae"
+      ],
+      "single": false,
+      "numReproTotal": 234000000
     }
   ]
 }

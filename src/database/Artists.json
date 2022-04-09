@@ -1,41 +1,134 @@
 {
   "Artists": [
     {
-      "name": "Artista 1",
+      "name": "Michael Jackson",
       "genres": [
-        "jazz",
         "pop"
       ],
       "songs": [
-        "Virtual Diva",
-        "Ella y Yo"
+        "Dirty Diana",
+        "Human nature",
+        "Black or white",
+        "Thriller",
+        "Beat it"
       ],
-      "listeners": 25
+      "listeners": 15645132
     },
     {
-      "name": "Artista 2",
+      "name": "Elvis Presley",
       "genres": [
-        "pop",
+        "rock"
+      ],
+      "songs": [
+        "That’s All Right",
+        "Always On My Mind",
+        "Suspicious Minds",
+        "Viva Las Vegas",
+        "Heartbreak Hotel"
+      ],
+      "listeners": 65465461
+    },
+    {
+      "name": "James Brown",
+      "genres": [
         "funk"
       ],
       "songs": [
-        "Mami",
-        "Ella y Yo"
+        "I Feel Good",
+        "Try Me",
+        "The Boss",
+        "The Payback",
+        "Soul Power"
       ],
-      "listeners": 250
+      "listeners": 12893213
     },
     {
-      "name": "Artista 3",
+      "name": "Louis Armstrong",
       "genres": [
-        "rock",
-        "reguae"
+        "jazz"
       ],
       "songs": [
-        "Mami",
-        "Virtual Diva",
-        "Ella y Yo"
+        "Hello, Dolly!",
+        "We Have All The Time In The World",
+        "What A Wonderful World",
+        "When It's Sleepy Time Down South",
+        "When The Saints Go Marching In"
       ],
-      "listeners": 25
+      "listeners": 57554452
+    },
+    {
+      "name": "Wolfgang Amadeus Mozart",
+      "genres": [
+        "musica clasica"
+      ],
+      "songs": [
+        "Elvira Madigan",
+        "La Clemenza di Tito",
+        "The Marriage of Figaro Overture",
+        "Réquiem",
+        "Turkish March"
+      ],
+      "listeners": 57786452
+    },
+    {
+      "name": "Richie Kotzen",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
+    },
+    {
+      "name": "Bobby Dall",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
+    },
+    {
+      "name": "Harry Mills",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
+    },
+    {
+      "name": "John Mills Jr.",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
+    },
+    {
+      "name": "Paul Williams",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
+    },
+    {
+      "name": "David Ruffin",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
+    },
+    {
+      "name": "Mick Jagger",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
+    },
+    {
+      "name": "Keith Richards",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
+    },
+    {
+      "name": "John Lennon",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
+    },
+    {
+      "name": "Paul McCartney",
+      "genres": [],
+      "songs": [],
+      "listeners": 4984651
     }
   ]
 }

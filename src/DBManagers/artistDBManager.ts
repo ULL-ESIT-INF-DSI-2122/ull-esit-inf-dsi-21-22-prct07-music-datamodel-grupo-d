@@ -95,7 +95,7 @@ export function loadArtistsFromDB(allSongs: Song[]): Artist[] {
       });
     });
 
-    artistsResult.push(new Artist(artist.name, artist.genres, songs, artist.listeners));
+    artistsResult.push(new Artist(artist.name, songs, artist.listeners));
   });
 
   return artistsResult;
