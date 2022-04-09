@@ -6,7 +6,7 @@ import { Song } from './song';
 /**
  * Tipo de generos musicales.
  */
-export type genres = "rock" | "pop" | "musica clasica" | "jazz" | "reguae" | "musica disco" | "heavy" | "soul" | 'country' | 'funk'
+export type Genres = "rock" | "pop" | "musica clasica" | "jazz" | "reguae" | "musica disco" | "heavy" | "soul" | 'country' | 'funk'
 /**
  * Clase para representar los generos de música.
  * @param genre Nombre del genero
@@ -34,7 +34,7 @@ export class MusicGenre {
   private myGroups: Group[] = [];
   private myAlbumes: Album[] = [];
   private mySongs: Song[] = [];
-  constructor(private genre: genres, allSongs: Song[], allArtists: Artist[], allGroups: Group[], allAlbumes: Album[]) {
+  constructor(private genre: Genres, allSongs: Song[], allArtists: Artist[], allGroups: Group[], allAlbumes: Album[]) {
     this.setArtists(allArtists);
     this.setGroups(allGroups);
     this.setAlbumes(allAlbumes);
@@ -65,7 +65,7 @@ export class MusicGenre {
 
   // ----------------------------------------------------------
   // setters
-  setGenre(newGenre: genres) {
+  setGenre(newGenre: Genres) {
     this.myAlbumes = [];
     this.myArtists = [];
     this.myGroups = [];
@@ -76,7 +76,7 @@ export class MusicGenre {
   setArtists(newArtists: Artist[]) {
     this.myArtists = [];
     newArtists.forEach((artist: Artist) => {
-      artist.getGenres().forEach((genre_: genres) => {
+      artist.getGenres().forEach((genre_: Genres) => {
         if (genre_ === this.genre && !this.myArtists.includes(artist)) {
           this.myArtists.push(artist);
         }
@@ -87,7 +87,7 @@ export class MusicGenre {
   setGroups(newGroups: Group[]){
     this.myGroups = [];
     newGroups.forEach((grupo: Group) => {
-      grupo.getGenres().forEach((genre_: genres) => {
+      grupo.getGenres().forEach((genre_: Genres) => {
         if (genre_ === this.genre && !this.myGroups.includes(grupo)) {
           this.myGroups.push(grupo);
         }
@@ -98,7 +98,7 @@ export class MusicGenre {
   setAlbumes(newAlbumes: Album[]) {
     this.myAlbumes = [];
     newAlbumes.forEach((album: Album) => {
-      album.getGenres().forEach((genre_: genres) => {
+      album.getGenres().forEach((genre_: Genres) => {
         if (genre_ === this.genre && !this.myAlbumes.includes(album)) {
           this.myAlbumes.push(album);
         }
@@ -109,7 +109,7 @@ export class MusicGenre {
   setSongs(newSongs: Song[]) {
     this.mySongs = [];
     newSongs.forEach((song: Song) => {
-      song.getGenres().forEach((genre_: genres) => {
+      song.getGenres().forEach((genre_: Genres) => {
         if (genre_ === this.genre && !this.mySongs.includes(song)) {
           this.mySongs.push(song);
         }

@@ -1,4 +1,4 @@
-import { genres } from "./musicGenre";
+import { Genres } from "./musicGenre";
 /**
  * Class to representate Songs.
  * @param name Nombre de la cancion.
@@ -21,7 +21,7 @@ import { genres } from "./musicGenre";
  * @method setNumReproTotal Establece el numero total de reproducciones.
  */
 export class Song {
-  constructor(private name: string, private autor: string, private duration: number, private genres: genres[], private single: boolean, private numReproTotal: number) { }
+  constructor(private name: string, private autor: string, private duration: number, private genres: Genres[], private single: boolean, private numReproTotal: number) { }
   // -----------------------------------------------
   // getters
   getName() {
@@ -53,7 +53,7 @@ export class Song {
   setDuration(newDuration:number) {
     this.duration = newDuration;
   }
-  setGenres(newGenre:genres[]) {
+  setGenres(newGenre:Genres[]) {
     this.genres = newGenre;
   }
   setSingle(newSingle:boolean) {

@@ -3,7 +3,7 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('src/database/Songs.json');
 const db = low(adapter);
 
-import { genres } from "../musicGenre";
+import { Genres } from "../musicGenre";
 import { Song } from "../song";
 
 /**
@@ -43,7 +43,7 @@ export function addSongToDB(song: Song): void {
       })
       .write();
 
-  song.getGenres().forEach((genre: genres) => {
+  song.getGenres().forEach((genre: Genres) => {
     db.get('Songs')
         .find({name: song.getName()})
         .get('genres')
@@ -60,7 +60,7 @@ type SongJSON = {
   name: string,
   author: string,
   duration: number,
-  genres: genres[],
+  genres: Genres[],
   single: boolean,
   numReproTotal: number
 }

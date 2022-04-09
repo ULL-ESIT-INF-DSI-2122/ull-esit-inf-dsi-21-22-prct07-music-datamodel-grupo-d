@@ -1,6 +1,6 @@
 import { Album } from "./album";
 import { Artist } from "./artist";
-import { genres } from "./musicGenre";
+import { Genres } from "./musicGenre";
 
 /**
  * Clase para representar los grupos de autores.
@@ -25,11 +25,11 @@ import { genres } from "./musicGenre";
  */
 export class Group {
   private albumes: Album[] = [];
-  private genres: genres[] = [];
+  private genres: Genres[] = [];
   constructor(private name: string, private artists: Artist [], private creationYear: Date, private listeners: number) {
     artists.forEach((artist: Artist) => {
       artist.addGroup(this);
-      artist.getGenres().forEach((genre: genres) => {
+      artist.getGenres().forEach((genre: Genres) => {
         if (!this.genres.includes(genre)) {
           this.genres.push(genre);
         }

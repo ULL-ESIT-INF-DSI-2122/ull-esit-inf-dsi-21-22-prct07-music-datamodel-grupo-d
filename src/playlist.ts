@@ -1,4 +1,4 @@
-import { genres } from "./musicGenre";
+import { Genres } from "./musicGenre";
 import { Song } from "./song";
 
 /**
@@ -18,7 +18,7 @@ import { Song } from "./song";
  */
 export class Playlist {
   private duration: number = 0;
-  private genres: genres[] = [];
+  private genres: Genres[] = [];
   constructor(private name: string, private songs: Song[]) {
     this.refreshData();
   }
@@ -55,7 +55,7 @@ export class Playlist {
     this.genres = [];
     this.songs.forEach((song: Song) => {
       this.duration += song.getDuration();
-      song.getGenres().forEach((genre: genres) => {
+      song.getGenres().forEach((genre: Genres) => {
         if (!this.genres.includes(genre)) {
           this.genres.push(genre);
         }

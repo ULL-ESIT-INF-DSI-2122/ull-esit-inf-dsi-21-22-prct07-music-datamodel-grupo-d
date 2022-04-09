@@ -1,6 +1,6 @@
 import { Artist } from "./artist";
 import { Group } from "./group";
-import { genres } from "./musicGenre";
+import { Genres } from "./musicGenre";
 import { Song } from "./song";
 /**
  * Clase Album
@@ -22,7 +22,7 @@ import { Song } from "./song";
  * @method addSong Añade una cancion al album.
  */
 export class Album {
-  private genres: genres[] = [];
+  private genres: Genres[] = [];
   constructor(private name: string, private GroupOrArtist: Group | Artist, private year: Date, private songs: Song []) {
     GroupOrArtist.addAlbum(this);
 
@@ -77,7 +77,7 @@ export class Album {
   private refreshData(){
     this.genres = [];
     this.songs.forEach((song: Song) => {
-      song.getGenres().forEach((genre: genres) => {
+      song.getGenres().forEach((genre: Genres) => {
         if (!this.genres.includes(genre)) {
           this.genres.push(genre);
         }

@@ -1,4 +1,4 @@
-import { genres } from "./musicGenre";
+import { Genres } from "./musicGenre";
 import { Group } from "./group";
 import { Album } from "./album";
 import { Song } from "./song";
@@ -28,7 +28,7 @@ import { Song } from "./song";
 export class Artist {
   private groups: Group[] = [];
   private albumes: Album[] = [];
-  private genres: genres[]= [];
+  private genres: Genres[]= [];
   constructor(private name: string, private songs: Song[], private listeners: number){
     this.refereshData();
   }
@@ -69,7 +69,7 @@ export class Artist {
   // Métodos.
   private refereshData() {
     this.songs.forEach((song: Song) => {
-      song.getGenres().forEach((genre: genres) => {
+      song.getGenres().forEach((genre: Genres) => {
         if (!this.genres.includes(genre)) {
           this.genres.push(genre);
         }

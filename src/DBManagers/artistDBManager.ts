@@ -4,7 +4,7 @@ const adapter = new FileSync('src/database/Artists.json');
 const db = low(adapter);
 
 import { Artist } from "../artist";
-import { genres } from "../musicGenre";
+import { Genres } from "../musicGenre";
 import { Song } from "../song";
 
 /**
@@ -42,7 +42,7 @@ export function addArtistToDB(artist: Artist): void {
       })
       .write();
 
-  artist.getGenres().forEach((genre: genres) => {
+  artist.getGenres().forEach((genre: Genres) => {
     db.get('Artists')
         .find({name: artist.getName()})
         .get('genres')
@@ -65,7 +65,7 @@ export function addArtistToDB(artist: Artist): void {
  */
 type ArtistJSON = {
   name: string,
-  genres: genres[],
+  genres: Genres[],
   songs: string[],
   listeners: number
 }

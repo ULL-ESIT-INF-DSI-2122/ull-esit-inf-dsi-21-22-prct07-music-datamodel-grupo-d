@@ -3,7 +3,7 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('src/database/MusicGenres.json');
 const db = low(adapter);
 
-import { genres, MusicGenre } from "../musicGenre";
+import { Genres, MusicGenre } from "../musicGenre";
 import { Album } from "../album";
 import { Artist } from "../artist";
 import { Group } from "../group";
@@ -47,7 +47,7 @@ export function addMusicGenreToDB(musicGenre: MusicGenre): void {
  * en la base de datos
  */
 type MusicGenreJSON = {
-  genre: genres,
+  genre: Genres,
 }
 
 /**
