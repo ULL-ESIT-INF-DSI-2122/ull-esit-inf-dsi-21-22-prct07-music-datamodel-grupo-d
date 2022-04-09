@@ -10,6 +10,7 @@ describe("Pruebas de la clase MusicGenres.", () => {
   const HeyJude = new Song("Hey Jude", "The Beatles", 487, ["reguae"], false, 1200000000);
   const JohnLennon = new Artist("John Lennon", [HeyJude], 15645132);
   const TheBeatles: Group = new Group("The Beatles", [JohnLennon], new Date("1998"), 1);
+  const failGroup: Group = new Group("", [new Artist("", [new Song("", "", 111, ["country"], false, 11111)], 1)], new Date("1999"), 1);
   const Thriller: Album = new Album("Thriller", TheBeatles, new Date("1998"), [HeyJude]);
   const Reguae: MusicGenre = new MusicGenre("reguae", [HeyJude], [JohnLennon], [TheBeatles], [Thriller]);
   it("Pruebas exitencia clase Generos Musicales", () => {
@@ -18,7 +19,7 @@ describe("Pruebas de la clase MusicGenres.", () => {
   it("Prueba de los setters.", () => {
     Reguae.setGenre("reguae");
     Reguae.setArtists([JohnLennon]);
-    Reguae.setGroups([TheBeatles, new Group("", [], new Date("1999"), 1)]);
+    Reguae.setGroups([TheBeatles, failGroup]);
     Reguae.setAlbumes([Thriller]);
     Reguae.setSongs([HeyJude]);
   });
