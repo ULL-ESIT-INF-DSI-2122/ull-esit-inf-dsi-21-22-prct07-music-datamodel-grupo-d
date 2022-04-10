@@ -21,6 +21,10 @@ Luciano Sekulic Gregoris     | alu0101022239@ull.edu.es
 
 ---
 
+Para llevar acabo la ejecución de todo el programa desarrollado, tendrá que ejecutar `npm install` y `npm start`
+
+---
+
 ## 1. Introduccción de la práctica.
 
 En la práctica se pide digitalizar la colección de música de nuestros abuelos, para ello se ha realizado una serie de Clases para la correcta integración de todos los datos de dicha colección.

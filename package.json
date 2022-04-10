@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "doc": "typedoc",
-    "coverage": "nyc npm test && nyc report --reporter=lcov"
+    "coverage": "nyc npm test && nyc report --reporter=lcov",
+    "start": "tsc && node dist/gestor.js"
   },
   "keywords": [],
   "author": "",
