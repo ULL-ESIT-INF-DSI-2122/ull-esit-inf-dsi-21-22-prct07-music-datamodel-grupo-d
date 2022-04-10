@@ -1,6 +1,20 @@
 {
   "entryPoints": [
-    "./src/ejercicio-01.ts"
+    "src/DBManagers/albumDBManager.ts",
+    "src/DBManagers/artistDBManager.ts",
+    "src/DBManagers/groupDBManager.ts",
+    "src/DBManagers/musicGenreDBManager.ts",
+    "src/DBManagers/playlistDBManager.ts",
+    "src/DBManagers/songDBManager.ts",
+    "src/DBManagers/userPlaylistDBManager.ts",
+    "src/advancedGestor.ts",
+    "src/gestor.ts",
+    "src/album.ts",
+    "src/artist.ts",
+    "src/group.ts",
+    "src/musicGenre.ts",
+    "src/playlist.ts",
+    "src/song.ts"
   ],
   "out": "./docs"
 }

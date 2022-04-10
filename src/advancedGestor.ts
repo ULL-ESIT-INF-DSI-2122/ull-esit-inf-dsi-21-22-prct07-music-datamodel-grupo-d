@@ -14,7 +14,9 @@ import { MusicGenre } from "./musicGenre";
 import { Playlist } from "./playlist";
 import { Song } from "./song";
 
-
+/**
+ * Clase que representa el gestor avanzado
+ */
 export class AdvancedGestor {
   private allSongs: Song[] = [];
   private allPlaylists: Playlist[] = [];
@@ -31,6 +33,9 @@ export class AdvancedGestor {
     this.allMusicGenres = loadMusicGenresFromDB(this.allSongs, this.allArtists, this.allGroups, this.allAlbumes);
   }
 
+  /**
+   * Da inicio a la ejecucion
+   */
   start() {
     console.clear();
     inquire.prompt({
@@ -58,6 +63,9 @@ export class AdvancedGestor {
     });
   }
 
+  /**
+   * Lista todos los artistas para que puedes seleccionar
+   */
   private selectArtists(){
     const options: {name: string, value: number}[] = [];
     this.allArtists.forEach((artist: Artist, index: number) => {
@@ -81,6 +89,10 @@ export class AdvancedGestor {
     });
   }
 
+  /**
+   * Permite realizar acciones sobre un artista
+   * @param artist Artista sobre el cual se trabajara
+   */
   private actionsWithArtist(artist: Artist) {
     console.clear();
 
@@ -122,6 +134,9 @@ export class AdvancedGestor {
     });
   }
 
+  /**
+   * Lista todos los grupos para que puedes seleccionar
+   */
   private selectGroups(){
     const options: {name: string, value: number}[] = [];
     this.allGroups.forEach((group: Group, index: number) => {
@@ -145,6 +160,10 @@ export class AdvancedGestor {
     });
   }
 
+  /**
+   * Permite realizar acciones sobre un grupo
+   * @param group Grupo sobre el cual se trabajara
+   */
   private actionsWithGroup(group: Group) {
     console.clear();
 
@@ -166,6 +185,14 @@ export class AdvancedGestor {
     });
   }
 
+  /**
+   * Muetra informacion sobre un objeto
+   * @param object Objeto que uede ser Musica, Playlist o Album
+   * @param sort Tipo de sort a realizar
+   * @param reverse Booleano que indica si quieres el sort al revez
+   * @param objectFather Objeto padre, osea el que contiene el object que recibe,
+   * para que cuando se vuelva atras, saber quien es el padre
+   */
   private infoObject(object: Song[] | Playlist[] | Album[], sort: number, reverse: boolean, objectFather: Group | Artist) {
     console.clear();
 
